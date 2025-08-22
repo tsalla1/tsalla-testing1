@@ -16,15 +16,18 @@ export default function Footer() {
             to match your original design, and are removed on mobile.
           */}
           <Link href="/" className="mt-4 lg:mr-64 lg:mb-56">
-         <Image
-  src="https://cdn.sanity.io/images/9w6n0tb6/production/8774b28aff7d60dffcaf3e9b8a45e89932c8e60e-2874x1110.svg"
-  alt="Tsalla Aerospace"
-  width={2874}
-  height={1110}
-  className="h-40 w-auto brightness-0 invert"
-  priority
-/>
-
+            <Image
+              src="/tsalla_logo2.svg"
+              alt="Tsalla Aerospace"
+              width={50}
+              height={50}
+              /*
+                Mobile size is h-28 for better look.
+                Desktop size is h-40, exactly like your original code.
+              */
+              className="h-28 lg:h-40 w-auto brightness-0 invert"
+              priority
+            />
           </Link>
         </div>
 
