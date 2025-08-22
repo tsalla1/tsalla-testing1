@@ -61,7 +61,7 @@ export default function Missions() {
           </h2>
           <div className="max-w-7xl w-full mx-auto sm:max-w-[90%] md:max-w-[85%] lg:max-w-[80%] xl:max-w-[70%] px-4 sm:px-6 md:px-8">
             <p
-              className={`text-[13px] sm:text-[18px] md:text-[20px] leading-normal text-white font-semibold tracking-wide font-sans transition-all duration-700 ease-out transform ${
+              className={`text-[0.8125rem] sm:text-[1.125rem] md:text-[1.25rem] leading-normal text-white font-semibold tracking-wide font-sans transition-all duration-700 ease-out transform ${
                 isVisible ? "opacity-90 translate-y-0" : "opacity-0 translate-y-12"
               }`}
               style={{

@@ -102,7 +102,7 @@ const TestimonialSlider = () => {
   }, [nextSlide]);
 
   return (
-    <div className="w-full px-6 md:px-12 xl:px-24 max-w-[1440px] mx-auto py-16">
+    <div className="w-full px-6 md:px-12 xl:px-24 max-w-[90rem] mx-auto py-16">
   {/* Heading */}
   <div className="text-left mb-10">
 <p className="text-gray-400 uppercase tracking-widest mb-6 font-sans text-2xl font-light">
@@ -123,7 +123,7 @@ const TestimonialSlider = () => {
 
   {/* Slider */}
 <div
-  className="relative h-[500px] overflow-hidden rounded-2xl shadow-xl"
+  className="relative h-[31.25rem] overflow-hidden rounded-2xl shadow-xl"
   style={{ backgroundColor: "#eaeaea" }}
 >
   <div
@@ -153,7 +153,7 @@ const TestimonialSlider = () => {
             </div>
           </div>
 
-          <p className="text-black/90 text-sm md:text-base lg:text-[15px] mb-4 italic font-light">
+          <p className="text-black/90 text-sm md:text-base lg:text-[0.9375rem] mb-4 italic font-light">
             {testimonial.text}
           </p>
 
@@ -163,11 +163,11 @@ const TestimonialSlider = () => {
             ))}
           </div>
 
-          <h3 className="text-[17px] md:text-xl text-black mb-1 font-['Inter'] font-medium">
+          <h3 className="text-[1.0625rem] md:text-xl text-black mb-1 font-['Inter'] font-medium">
             {testimonial.name}
           </h3>
 
-          <p className="text-black/80 font-light text-sm md:text-[15px] font-['Inter']">
+          <p className="text-black/80 font-light text-sm md:text-[0.9375rem] font-['Inter']">
             {testimonial.role} at {testimonial.company}
           </p>
         </div>

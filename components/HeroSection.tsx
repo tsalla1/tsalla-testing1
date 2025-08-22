@@ -38,14 +38,14 @@ export default function HeroSection() {
           /* --- DESKTOP STYLES (Overrides at lg breakpoint: 1024px) --- */
           /* Reverts to your original desktop layout with fixed positioning */
           lg:justify-start
-          lg:h-auto lg:top-[200px] lg:left-[45px]
-          lg:max-w-[1182px]
+          lg:h-auto lg:top-[12.5rem] lg:left-[2.8125rem]
+          lg:max-w-[73.875rem]
         "
       >
         {/* Added a container to control width on mobile, as in your example */}
         <div className="w-full max-w-4xl">
           {/* MAIN LINE */}
-          <h1 className="font-bold text-4xl sm:text-5xl lg:text-[70px] leading-[1.1] mb-5 font-farro tracking-tight">
+          <h1 className="font-bold text-4xl sm:text-5xl lg:text-[4.375rem] leading-[1.1] mb-5 font-farro tracking-tight">
             UNMANNED.<br />
             UNMATCHED.<br />
             UNCOMPROMISED.

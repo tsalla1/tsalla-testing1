@@ -24,7 +24,7 @@ const ContentWrapper: React.FC<{ children: React.ReactNode; className?: string }
   className = "",
 }) => (
   <div
-    className={`w-full px-6 md:px-12 xl:px-24 max-w-[1440px] mx-auto ${className}`}
+    className={`w-full px-6 md:px-12 xl:px-24 max-w-[90rem] mx-auto ${className}`}
     style={{
       marginLeft: "0", // no offset for mobile/tablet
     }}
