@@ -153,13 +153,13 @@ video[data-loading="true"] {
 @keyframes megaMenuSlideDown {
   from {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-1.25rem);
     max-height: 0;
   }
   to {
     opacity: 1;
     transform: translateY(0);
-    max-height: 500px;
+    max-height: 31.25rem;
   }
 }
 
@@ -167,11 +167,11 @@ video[data-loading="true"] {
   from {
     opacity: 1;
     transform: translateY(0);
-    max-height: 500px;
+    max-height: 31.25rem;
   }
   to {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-1.25rem);
     max-height: 0;
   }
 }
