@@ -90,7 +90,7 @@ export default function ValuesSection() {
           </div>
 
           {/* Right: Image + title + description */}
-          <div className="relative  overflow-hidden border border-white h-[400px] md:h-[500px] w-full">
+          <div className="relative  overflow-hidden border border-white h-[25rem] md:h-[31.25rem] w-full">
             <Image
               src={selected.image || "/placeholder.svg"}
               alt={selected.title}

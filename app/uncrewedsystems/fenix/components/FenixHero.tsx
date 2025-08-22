@@ -41,7 +41,7 @@ export default function FenixHero(): JSX.Element {
         {/* Left Side: Title & Subtitle */}
         <div className="max-w-full lg:max-w-2xl text-left mb-8 lg:mb-0 lg:flex lg:flex-col lg:justify-end">
           <h1
-            className="text-white font-bold text-[32px] sm:text-[44px] md:text-[60px] lg:text-[72px] leading-tight tracking-tight mb-4"
+            className="text-white font-bold text-[2rem] sm:text-[2.75rem] md:text-[3.75rem] lg:text-[4.5rem] leading-tight tracking-tight mb-4"
             style={{ letterSpacing: "-0.03em" }}
           >
             FENIx

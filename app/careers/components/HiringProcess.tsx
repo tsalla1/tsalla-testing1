@@ -211,11 +211,11 @@ const Masonry = ({
           onMouseLeave={(e) => handleMouseLeave(item.id, e.currentTarget)}
         >
           <div
-            className="relative w-full h-full bg-cover bg-center rounded-[10px] shadow-[0px_10px_50px_-10px_rgba(0,0,0,0.2)]"
+            className="relative w-full h-full bg-cover bg-center rounded-[0.625rem] shadow-[0px_10px_50px_-10px_rgba(0,0,0,0.2)]"
             style={{ backgroundImage: `url(${item.img})` }}
           >
             {colorShiftOnHover && (
-              <div className="color-overlay absolute inset-0 rounded-[10px] bg-gradient-to-tr from-pink-500/50 to-sky-500/50 opacity-0 pointer-events-none" />
+              <div className="color-overlay absolute inset-0 rounded-[0.625rem] bg-gradient-to-tr from-pink-500/50 to-sky-500/50 opacity-0 pointer-events-none" />
             )}
           </div>
         </div>
