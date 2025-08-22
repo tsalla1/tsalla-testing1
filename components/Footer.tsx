@@ -19,8 +19,8 @@ export default function Footer() {
             <Image
               src="/tsalla-logo-new.svg"
               alt="Tsalla Aerospace"
-              width={50}
-              height={50}
+              width={160}
+              height={160}
               /*
                 Mobile size is h-28 for better look.
                 Desktop size is h-40, exactly like your original code.
