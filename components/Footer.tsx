@@ -17,10 +17,10 @@ export default function Footer() {
           */}
           <Link href="/" className="mt-4 lg:mr-64 lg:mb-56">
             <Image
-              src="/tsalla-logo-new.svg"
+              src="/tsalla-logo-corrected.svg"
               alt="Tsalla Aerospace"
-              width={160}
-              height={160}
+              width={376}
+              height={145}
               /*
                 Mobile size is h-28 for better look.
                 Desktop size is h-40, exactly like your original code.
