@@ -343,7 +343,7 @@ export default function Navbar() {
                           alt={`${hoveredUncrewedSystemDetails.headline} drone`}
                           width={500}
                           height={300}
-                          className="absolute bottom-0 right-0 w-[500px] h-auto object-contain opacity-80"
+                          className="absolute bottom-0 right-0 w-[31.25rem] h-auto object-contain opacity-80"
                           priority
                         />
                       )}

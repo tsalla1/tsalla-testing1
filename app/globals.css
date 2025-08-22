@@ -3,6 +3,23 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /*
+    For screens larger than 1575px, implement responsive scaling.
+    This scales the root font-size proportionally with the viewport width,
+    ensuring the entire layout scales accordingly.
+    The formula calculates the font size that maintains the same proportion
+    as 16px on a 1575px screen.
+  */
+  @media (min-width: 1575px) {
+    html {
+      font-size: calc(100vw / 1575 * 16);
+    }
+  }
+
   * {
     @apply border-border;
   }
@@ -26,11 +43,6 @@
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-gray-500;
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
 }
 
 /* Video background optimization */

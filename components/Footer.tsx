@@ -8,7 +8,7 @@ export default function Footer() {
       {/* Top border line */}
       <div className="absolute top-0 left-0 w-full border-t border-white/10" />
 
-      <div className="w-full max-w-[1440px] px-6 lg:px-24 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-start">
+      <div className="w-full max-w-[90rem] px-6 lg:px-24 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-start">
         {/* ========== Left Column (Logo) ========== */}
         {/* On mobile, centers the logo. On desktop, aligns it to the start. */}
         <div className="flex flex-col items-center lg:items-start">
@@ -106,7 +106,7 @@ export default function Footer() {
                   alt="LinkedIn"
                   width={24}
                   height={24}
-                  className="w-[24px] h-[24px] invert"
+                  className="w-[1.5rem] h-[1.5rem] invert"
                 />
               </Link>
               <Link href="https://www.youtube.com/@tsallaaerospace6378" target="_blank" className="hover:text-white/70 transition">
@@ -115,7 +115,7 @@ export default function Footer() {
                   alt="YouTube"
                   width={24}
                   height={24}
-                  className="w-[24px] h-[24px] invert"
+                  className="w-[1.5rem] h-[1.5rem] invert"
                 />
               </Link>
               <Link href="https://x.com/TsallaAerospace" target="_blank" className="hover:opacity-80 transition">
@@ -124,7 +124,7 @@ export default function Footer() {
                   alt="Twitter X"
                   width={24}
                   height={24}
-                  className="w-[24px] h-[24px] invert"
+                  className="w-[1.5rem] h-[1.5rem] invert"
                 />
               </Link>
             </div>
