@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
     // Email content
 const mailOptions = {
   from: EMAIL_USER,
-  to: "vapeb84569@amcret.com",
+  to: "fexoli6321@elobits.com",
   subject: `New Contact Form Submission - ${enquiryType}`,
   html: `
     <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 700px; margin: 0 auto; background-color: #f4f6f8; padding: 30px; border-radius: 10px;">
