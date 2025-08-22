@@ -8,7 +8,7 @@ import { ArrowRight } from "lucide-react"
 const Newsletter: React.FC = () => {
   return (
     <section className="bg-[#eaeaea] py-16 lg:py-24 font-['Pontano_Sans']">
-      <div className="container mx-auto px-6 lg:px-24 max-w-[1440px]">
+      <div className="container mx-auto px-6 lg:px-24 max-w-[90rem]">
         {/* Section Title */}
         <div className="text-center mb-12">
     <h2
@@ -54,7 +54,7 @@ const Newsletter: React.FC = () => {
             href="/newsroom"
             className="inline-flex items-center text-black group text-base font-medium transition-all duration-200"
           >
-            <span className="relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-black after:transition-all after:duration-300 group-hover:after:w-full">
+            <span className="relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[0.125rem] after:bg-black after:transition-all after:duration-300 group-hover:after:w-full">
               More in Newsroom
             </span>
             <ArrowRight size={18} className="ml-2 transition-transform duration-200 group-hover:translate-x-1" />

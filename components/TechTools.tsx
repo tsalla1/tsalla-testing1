@@ -58,7 +58,7 @@ export default function TechTools() {
             </h2>
             <h3
               // Using responsive classes that end at the original desktop font size
-              className={`text-white/100 mb-3 transition-all duration-700 transform font-mono text-3xl lg:text-[35px] font-medium leading-tight lg:leading-normal ${
+              className={`text-white/100 mb-3 transition-all duration-700 transform font-mono text-3xl lg:text-[2.1875rem] font-medium leading-tight lg:leading-normal ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"
               } `}
               style={{
@@ -73,10 +73,10 @@ export default function TechTools() {
           </div>
 
           {/* Right Column - No text alignment changes */}
-          <div className="max-w-[500px] space-y-4 text-white/80 flex flex-col justify-start lg:pt-[122px] font-['Inter']">
+          <div className="max-w-[31.25rem] space-y-4 text-white/80 flex flex-col justify-start lg:pt-[7.625rem] font-['Inter']">
             <p
               // Responsive font size that matches original desktop size
-              className={`transition-all duration-700 transform text-base lg:text-[15px] font-extralight leading-relaxed ${
+              className={`transition-all duration-700 transform text-base lg:text-[0.9375rem] font-extralight leading-relaxed ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"
               }`}
               style={{ transitionDelay: "300ms" }}
@@ -86,7 +86,7 @@ export default function TechTools() {
               precision in every project.
             </p>
             <p
-              className={`transition-all duration-700 transform text-base lg:text-[15px] font-extralight leading-relaxed ${
+              className={`transition-all duration-700 transform text-base lg:text-[0.9375rem] font-extralight leading-relaxed ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"
               }`}
               style={{
@@ -108,7 +108,7 @@ export default function TechTools() {
             >
               <span className="relative font-medium text-base md:text-lg mr-2" style={{ fontFamily: "Chakra Petch, sans-serif" }}>
                 <span className="relative z-10">Explore Our Tech Stack</span>
-                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-white transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
+                <span className="absolute left-0 bottom-0 w-full h-[0.125rem] bg-white transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
               </span>
               <span className="w-6 h-6 border border-white rounded-full flex items-center justify-center transition-colors group-hover:bg-white group-hover:text-black ml-2">
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />

@@ -35,13 +35,13 @@ export default function AboutUsVideoPage() {
           px-4 sm:px-6 md:px-8
 
           lg:justify-start
-          lg:h-auto lg:top-[200px] lg:left-[45px]
-          lg:max-w-[1182px]
+          lg:h-auto lg:top-[12.5rem] lg:left-[2.8125rem]
+          lg:max-w-[73.875rem]
         "
       >
         <div className="w-full max-w-4xl">
           {/* Heading */}
-          <h1 className="font-bold text-4xl sm:text-5xl lg:text-[70px] leading-[1.1] mb-5 font-clash tracking-tight">
+          <h1 className="font-bold text-4xl sm:text-5xl lg:text-[4.375rem] leading-[1.1] mb-5 font-clash tracking-tight">
             ABOUT US
           </h1>
 

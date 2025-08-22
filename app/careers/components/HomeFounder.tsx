@@ -33,7 +33,7 @@ const FounderNotePage = () => {
 
           {/* Right Column: Image */}
           <div className="w-full max-w-lg mx-auto">
-            <div className="w-full h-[400px] bg-gray-200 overflow-hidden">
+            <div className="w-full h-[25rem] bg-gray-200 overflow-hidden">
               <img
                 src="https://shield.ai/wp-content/uploads/2025/03/hero-2-2.jpg"
                 alt="Founder team photo"

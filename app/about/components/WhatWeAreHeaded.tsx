@@ -11,7 +11,7 @@ export default function WhatWeAreHeaded() {
         <div className="flex flex-col md:flex-row items-center justify-between w-full gap-16 md:gap-24">
           {/* Left Content */}
           <div className="md:w-1/2">
-            <h2 className="text-white font-clash text-[42px] md:text-[56px] leading-[1.15] font-semibold mb-6">
+            <h2 className="text-white font-clash text-[2.625rem] md:text-[3.5rem] leading-[1.15] font-semibold mb-6">
               Where We're Headed
             </h2>
 

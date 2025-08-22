@@ -51,7 +51,7 @@ export default function UncrewedSystemsHero() {
         {/* Shifted up like CounterHero */}
         <div className="relative -top-16 md:-top-8 lg:top-0 max-w-full lg:max-w-2xl text-left my-3">
           <h1
-            className="font-bold text-[32px] sm:text-[44px] md:text-[60px] lg:text-[72px] leading-tight tracking-tight mb-4 whitespace-nowrap"
+            className="font-bold text-[2rem] sm:text-[2.75rem] md:text-[3.75rem] lg:text-[4.5rem] leading-tight tracking-tight mb-4 whitespace-nowrap"
             style={{ letterSpacing: "-0.03em" }}
           >
             UNCREWED SYSTEMS

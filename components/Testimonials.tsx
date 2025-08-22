@@ -101,7 +101,7 @@ const TestimonialBlock: React.FC<TestimonialBlockProps> = ({
             style={contentContainerStyle}
           >
             <Image
-              className="mb-6 lg:mb-4 lg:min-h-[80px] lg:object-scale-down lg:object-left mx-auto lg:mx-0"
+              className="mb-6 lg:mb-4 lg:min-h-[5rem] lg:object-scale-down lg:object-left mx-auto lg:mx-0"
               src={logoImage || "/placeholder.svg"}
               alt={`${title} Logo`}
               width={200}
@@ -128,7 +128,7 @@ const Testimonials: React.FC = () => {
     // Added responsive padding to the section
     <section className="bg-[#eaeaea] text-black border-t border-b border-black py-12 sm:py-16 md:py-20 lg:py-24">
       {/* Header */}
-      <div className="w-full px-6 md:px-12 xl:px-24 max-w-[1440px] mx-auto mb-12">
+      <div className="w-full px-6 md:px-12 xl:px-24 max-w-[90rem] mx-auto mb-12">
         <h2
           className="text-black mb-2 font-sans text-2xl"
           style={{

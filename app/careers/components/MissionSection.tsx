@@ -8,7 +8,7 @@ const ContentWrapper: React.FC<{ children: React.ReactNode; className?: string }
   className = "",
 }) => (
   <div
-    className={`w-full px-6 md:px-12 xl:px-24 max-w-[1440px] mx-auto lg:ml-[2.75rem] ${className}`}
+    className={`w-full px-6 md:px-12 xl:px-24 max-w-[90rem] mx-auto lg:ml-[2.75rem] ${className}`}
   >
     {children}
   </div>
@@ -61,7 +61,7 @@ export default function PerksAndBenefitsPage() {
       </div>
 
       {/* RIGHT COLUMN */}
-      <div className="w-full h-[500px] lg:h-auto">
+      <div className="w-full h-[31.25rem] lg:h-auto">
         <img
           src="https://images.unsplash.com/photo-1629904853716-f0bc54eea481?auto=format&fit=crop&q=80&w=1600"
           alt="Team working together"
