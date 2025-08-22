@@ -1,6 +1,6 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Instagram } from "lucide-react";
+import Link from "next/link"
+import Image from "next/image"
+import { Instagram } from "lucide-react"
 
 export default function Footer() {
   return (
@@ -17,7 +17,7 @@ export default function Footer() {
           */}
           <Link href="/" className="mt-4 lg:mr-64 lg:mb-56">
             <Image
-              src="/tsalla_logo2.svg"
+              src="/tsalla-logo-new.svg"
               alt="Tsalla Aerospace"
               width={50}
               height={50}
@@ -39,10 +39,26 @@ export default function Footer() {
             <div>
               <p className="font-mono text-white uppercase mb-4 tracking-wider text-lg">COMPANY</p>
               <ul className="space-y-2">
-                <li><Link href="/about" className="text-white/70 hover:text-white transition">About Us</Link></li>
-                <li><Link href="/mission-autonomy" className="text-white/70 hover:text-white transition">Mission Autonomy</Link></li>
-                <li><Link href="/our-team" className="text-white/70 hover:text-white transition">Our Team</Link></li>
-                <li><Link href="/careers" className="text-white/70 hover:text-white transition">Careers</Link></li>
+                <li>
+                  <Link href="/about" className="text-white/70 hover:text-white transition">
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/mission-autonomy" className="text-white/70 hover:text-white transition">
+                    Mission Autonomy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/our-team" className="text-white/70 hover:text-white transition">
+                    Our Team
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/careers" className="text-white/70 hover:text-white transition">
+                    Careers
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -50,9 +66,21 @@ export default function Footer() {
             <div>
               <p className="font-mono text-white uppercase mb-4 tracking-wider text-lg">PRODUCTS</p>
               <ul className="space-y-2">
-                <li><Link href="/products/roadrunner" className="text-white/70 hover:text-white transition">Roadrunner</Link></li>
-                <li><Link href="/products/hardware" className="text-white/70 hover:text-white transition">Hardware</Link></li>
-                <li><Link href="/products/mission-systems" className="text-white/70 hover:text-white transition">Mission Systems</Link></li>
+                <li>
+                  <Link href="/products/roadrunner" className="text-white/70 hover:text-white transition">
+                    Roadrunner
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/products/hardware" className="text-white/70 hover:text-white transition">
+                    Hardware
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/products/mission-systems" className="text-white/70 hover:text-white transition">
+                    Mission Systems
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -60,9 +88,21 @@ export default function Footer() {
             <div>
               <p className="font-mono text-white uppercase mb-4 tracking-wider text-lg">MEDIA</p>
               <ul className="space-y-2">
-                <li><Link href="/newsroom" className="text-white/70 hover:text-white transition">Media Coverage</Link></li>
-                <li><Link href="/press-releases" className="text-white/70 hover:text-white transition">Press Releases</Link></li>
-                <li><Link href="/blog" className="text-white/70 hover:text-white transition">Blog</Link></li>
+                <li>
+                  <Link href="/newsroom" className="text-white/70 hover:text-white transition">
+                    Media Coverage
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/press-releases" className="text-white/70 hover:text-white transition">
+                    Press Releases
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/blog" className="text-white/70 hover:text-white transition">
+                    Blog
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -70,9 +110,21 @@ export default function Footer() {
             <div>
               <p className="font-mono text-white uppercase mb-4 tracking-wider text-lg">LEGAL</p>
               <ul className="space-y-2">
-                <li><Link href="/legal/security" className="text-white/70 hover:text-white transition">Security</Link></li>
-                <li><Link href="/legal/privacy" className="text-white/70 hover:text-white transition">Privacy</Link></li>
-                <li><Link href="/legal/suppliers" className="text-white/70 hover:text-white transition">Suppliers</Link></li>
+                <li>
+                  <Link href="/legal/security" className="text-white/70 hover:text-white transition">
+                    Security
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/legal/privacy" className="text-white/70 hover:text-white transition">
+                    Privacy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/legal/suppliers" className="text-white/70 hover:text-white transition">
+                    Suppliers
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -96,11 +148,19 @@ export default function Footer() {
             </div>
 
             {/* Social Icons */}
-             <div className="flex items-center justify-between gap-x-16">
-              <Link href="https://www.instagram.com/tsallaaerospace/?hl=en" target="_blank" className="hover:text-white/70 transition">
+            <div className="flex items-center justify-between gap-x-16">
+              <Link
+                href="https://www.instagram.com/tsallaaerospace/?hl=en"
+                target="_blank"
+                className="hover:text-white/70 transition"
+              >
                 <Instagram size={24} />
               </Link>
-              <Link href="https://www.linkedin.com/company/tsallaaerospace/" target="_blank" className="hover:text-white/70 transition">
+              <Link
+                href="https://www.linkedin.com/company/tsallaaerospace/"
+                target="_blank"
+                className="hover:text-white/70 transition"
+              >
                 <Image
                   src="https://img.icons8.com/?size=512&id=447&format=png"
                   alt="LinkedIn"
@@ -109,7 +169,11 @@ export default function Footer() {
                   className="w-[1.5rem] h-[1.5rem] invert"
                 />
               </Link>
-              <Link href="https://www.youtube.com/@tsallaaerospace6378" target="_blank" className="hover:text-white/70 transition">
+              <Link
+                href="https://www.youtube.com/@tsallaaerospace6378"
+                target="_blank"
+                className="hover:text-white/70 transition"
+              >
                 <Image
                   src="https://img.icons8.com/?size=100&id=37326&format=png&color=000000"
                   alt="YouTube"
@@ -140,5 +204,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  );
+  )
 }
