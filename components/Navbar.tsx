@@ -141,7 +141,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null)
   const [hoveredNavLinkIndex, setHoveredNavLinkIndex] = useState<number | null>(null)
-  const [hoveredUncrewedSystemDetails, setHoveredUncrewedSystemDetails] = useState<any>(null)
+  const [hoveredUncrewedSystemDetails, setHoveredUncrewedSystemDetails] = useState<any>(null) // State for specific uncrewed system details
   const megaMenuTimeoutRef = useRef<NodeJS.Timeout | null>(null)
   const lastScrollY = useRef(0)
   const pathname = usePathname()
@@ -153,7 +153,7 @@ export default function Navbar() {
       if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
         setIsVisible(false)
         setActiveMegaMenu(null)
-        setHoveredUncrewedSystemDetails(null)
+        setHoveredUncrewedSystemDetails(null) // Clear details on scroll hide
       } else {
         setIsVisible(true)
       }
@@ -168,7 +168,7 @@ export default function Navbar() {
   useEffect(() => {
     setMobileMenuOpen(false)
     setActiveMegaMenu(null)
-    setHoveredUncrewedSystemDetails(null)
+    setHoveredUncrewedSystemDetails(null) // Clear details on route change
   }, [pathname])
 
   const handleMouseEnterNav = (href: string) => {
@@ -178,14 +178,14 @@ export default function Navbar() {
     }
     setActiveMegaMenu(href)
     if (href !== "/uncrewedsystems") {
-      setHoveredUncrewedSystemDetails(null)
+      setHoveredUncrewedSystemDetails(null) // Clear details if not uncrewed systems
     }
   }
 
   const handleMouseLeaveNav = () => {
     megaMenuTimeoutRef.current = setTimeout(() => {
       setActiveMegaMenu(null)
-      setHoveredUncrewedSystemDetails(null)
+      setHoveredUncrewedSystemDetails(null) // Clear details when leaving main nav item
     }, 150)
   }
 
@@ -199,7 +199,7 @@ export default function Navbar() {
   const handleMouseLeaveMegaMenu = () => {
     megaMenuTimeoutRef.current = setTimeout(() => {
       setActiveMegaMenu(null)
-      setHoveredUncrewedSystemDetails(null)
+      setHoveredUncrewedSystemDetails(null) // Clear details when leaving mega menu
     }, 150)
   }
 
@@ -207,9 +207,9 @@ export default function Navbar() {
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300
-          ${isVisible ? "translate-y-0" : "-translate-y-full"}
-          ${isScrolled || !isHomePage ? "bg-black/95 backdrop-blur-sm" : "bg-transparent"}
-        `}
+    ${isVisible ? "translate-y-0" : "-translate-y-full"}
+    ${isScrolled || !isHomePage ? "bg-black/95 backdrop-blur-sm" : "bg-transparent"}
+  `}
       >
         <div className="w-full">
           <div className="flex items-center justify-between h-20 border-b border-white/100 px-4">
@@ -224,7 +224,6 @@ export default function Navbar() {
               />
             </Link>
 
-            {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center h-full border-l border-white/30 pr-14">
               {navigationItems.map((item, index) => (
                 <div
@@ -253,7 +252,6 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* Mobile Menu Toggle */}
             <div className="lg:hidden pr-4">
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -266,17 +264,15 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mega Menu */}
         {activeMegaMenu && megaMenuData[activeMegaMenu as keyof typeof megaMenuData] && (
           <div
             className="absolute top-full left-0 right-0 bg-black border-b border-white/20 shadow-2xl z-40 animate-slideDown"
             onMouseEnter={handleMouseEnterMegaMenu}
             onMouseLeave={handleMouseLeaveMegaMenu}
           >
-            <div className="w-full max-w-screen-2xl mx-auto flex">
-              {/* Left column */}
-              <div className="w-full lg:w-1/2 pl-4 pr-0 py-8 md:pl-6 lg:pl-8 xl:pl-10">
-                <div className="space-y-1 max-w-xl">
+            <div className="flex w-full">
+              <div className="w-1/2 max-w-7xl mx-auto pl-4 pr-0 py-8 md:pl-6 lg:pl-8 xl:pl-10">
+                <div className="space-y-1">
                   <h3 className="text-sm font-semibold text-gray-400 mb-6 tracking-wider font-orbit">
                     {megaMenuData[activeMegaMenu as keyof typeof megaMenuData].title}
                   </h3>
@@ -290,10 +286,12 @@ export default function Navbar() {
                           setHoveredUncrewedSystemDetails({ ...link.details, href: link.href })
                         }
                       }}
-                      onMouseLeave={() => setHoveredNavLinkIndex(null)}
+                      onMouseLeave={() => {
+                        setHoveredNavLinkIndex(null)
+                      }}
                       className={cn(
                         "group block p-3 rounded-lg hover:bg-white/5 transition-all duration-300 ease-out",
-                        hoveredNavLinkIndex !== null && hoveredNavLinkIndex !== index && "blur-sm scale-[0.98]"
+                        hoveredNavLinkIndex !== null && hoveredNavLinkIndex !== index && "blur-sm scale-[0.98]",
                       )}
                     >
                       <div className="flex items-center justify-between">
@@ -312,40 +310,40 @@ export default function Navbar() {
                   ))}
                 </div>
               </div>
-
-              {/* Right column */}
-              <div
+             <div
                 className={cn(
-                  "hidden lg:block lg:w-1/2 py-8 transition-all duration-500 ease-in-out relative overflow-hidden",
-                  activeMegaMenu === "/uncrewedsystems"
-                    ? "bg-[linear-gradient(rgba(0,0,0,0.3),_rgba(0,0,0,0.3)),url('/blueprint-background.png')] bg-cover bg-center text-white"
-                    : "bg-white text-black"
+                  "w-1/2 py-8 transition-all duration-500 ease-in-out relative overflow-hidden",
+    activeMegaMenu === "/uncrewedsystems"
+      // Changed the overlay from 50% (0.5) to 30% (0.3) opacity
+      ? "bg-[linear-gradient(rgba(0,0,0,0.3),_rgba(0,0,0,0.3)),url('/blueprint-background.png')] bg-cover bg-center text-white"
+      : "bg-white text-black",
                 )}
               >
                 {activeMegaMenu === "/uncrewedsystems" && <div className="absolute inset-0 bg-black opacity-30" />}
-                <div className="max-w-2xl mx-auto px-6 flex flex-col items-start h-full relative z-10">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 flex flex-col items-start h-full relative z-10">
                   {activeMegaMenu === "/uncrewedsystems" && hoveredUncrewedSystemDetails ? (
                     <>
                       <h2 className="text-5xl font-bold leading-tight tracking-wide font-orbit">
                         {hoveredUncrewedSystemDetails.headline}
                       </h2>
-                      <p
-                        className="text-lg leading-relaxed mt-2 mb-6 font-orbit"
-                        dangerouslySetInnerHTML={{ __html: hoveredUncrewedSystemDetails.subheadline }}
-                      />
+                     <p
+  className="text-lg leading-relaxed mt-2 mb-6 font-orbit"
+  dangerouslySetInnerHTML={{ __html: hoveredUncrewedSystemDetails.subheadline }}
+/>
+
                       <Link
                         href={hoveredUncrewedSystemDetails.href || "#"}
-                        className="inline-block px-4 py-2 border border-white text-white hover:bg-white hover:text-black transition-colors text-base mt-12 font-orbit"
+                        className="inline-block px-4 py-2 border border-white text-white hover:bg-white hover:text-black transition-colors text-base mt-52 font-orbit"
                       >
                         Explore
                       </Link>
                       {hoveredUncrewedSystemDetails.droneImage && (
                         <Image
-                          src={hoveredUncrewedSystemDetails.droneImage}
+                          src={hoveredUncrewedSystemDetails.droneImage || "/placeholder.svg"}
                           alt={`${hoveredUncrewedSystemDetails.headline} drone`}
-                          width={600}
-                          height={400}
-                          className="absolute bottom-0 right-0 max-w-[28rem] lg:max-w-[32rem] xl:max-w-[36rem] w-full h-auto object-contain opacity-80"
+                          width={500}
+                          height={300}
+                          className="absolute bottom-0 right-0 w-[31.25rem] h-auto object-contain opacity-80"
                           priority
                         />
                       )}
@@ -358,6 +356,7 @@ export default function Navbar() {
                       <p className="text-lg leading-relaxed font-orbit">
                         {megaMenuData[activeMegaMenu as keyof typeof megaMenuData]?.description}
                       </p>
+                      <div className="pt-4"></div>
                     </>
                   )}
                 </div>
@@ -367,7 +366,6 @@ export default function Navbar() {
         )}
       </nav>
 
-      {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-40 lg:hidden">
           <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setMobileMenuOpen(false)} />
