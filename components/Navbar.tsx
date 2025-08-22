@@ -224,11 +224,11 @@ export default function Navbar() {
               />
             </Link>
 
-            <div className="hidden lg:flex items-center h-full border-l border-white/30 pr-14">
+            <div className="hidden lg:flex items-center h-full border-l border-white/30 px-4 flex-nowrap overflow-x-auto pb-2 -mb-2">
               {navigationItems.map((item, index) => (
                 <div
                   key={item.name}
-                  className="relative h-full"
+                  className="relative h-full flex-shrink-0"
                   onMouseEnter={() => handleMouseEnterNav(item.href)}
                   onMouseLeave={handleMouseLeaveNav}
                 >
@@ -310,13 +310,12 @@ export default function Navbar() {
                   ))}
                 </div>
               </div>
-             <div
+              <div
                 className={cn(
                   "w-1/2 py-8 transition-all duration-500 ease-in-out relative overflow-hidden",
-    activeMegaMenu === "/uncrewedsystems"
-      // Changed the overlay from 50% (0.5) to 30% (0.3) opacity
-      ? "bg-[linear-gradient(rgba(0,0,0,0.3),_rgba(0,0,0,0.3)),url('/blueprint-background.png')] bg-cover bg-center text-white"
-      : "bg-white text-black",
+                  activeMegaMenu === "/uncrewedsystems"
+                    ? "bg-[linear-gradient(rgba(0,0,0,0.3),_rgba(0,0,0,0.3)),url('/blueprint-background.png')] bg-cover bg-center text-white"
+                    : "bg-white text-black",
                 )}
               >
                 {activeMegaMenu === "/uncrewedsystems" && <div className="absolute inset-0 bg-black opacity-30" />}
@@ -326,10 +325,10 @@ export default function Navbar() {
                       <h2 className="text-5xl font-bold leading-tight tracking-wide font-orbit">
                         {hoveredUncrewedSystemDetails.headline}
                       </h2>
-                     <p
-  className="text-lg leading-relaxed mt-2 mb-6 font-orbit"
-  dangerouslySetInnerHTML={{ __html: hoveredUncrewedSystemDetails.subheadline }}
-/>
+                      <p
+                        className="text-lg leading-relaxed mt-2 mb-6 font-orbit"
+                        dangerouslySetInnerHTML={{ __html: hoveredUncrewedSystemDetails.subheadline }}
+                      />
 
                       <Link
                         href={hoveredUncrewedSystemDetails.href || "#"}
