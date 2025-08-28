@@ -8,13 +8,13 @@ const founders = [
   {
     name: "Vinayak Tsalla",
     title: "Founder CEO, Tsalla Aerospace",
-    image: "https://quantum-systems.com/wp-content/uploads/bf-advanced-images/5388/QS_Sven_Kruck-800x800.jpg",
+    image: "https://quantum-systems.com/wp-content/uploads/2025/05/QS_Florian_Seibel-e1747376189171-1369x1536.jpg",
     bio: "Sven Kruck is a visionary leader with expertise in autonomous defense systems and strategic operations. He has over a decade of experience leading innovation in the aerospace sector."
   },
   {
     name: "Dr Narayana T S S",
     title: "Co-Founder Director, Tsalla Aerospace",
-    image: "https://quantum-systems.com/wp-content/uploads/bf-advanced-images/4794/QS_Florian_sEIBEL_Quote-1-800x800.png",
+    image: "https://quantum-systems.com/wp-content/uploads/2025/05/QS_Sven_Kruck-3800x38001-1-e1747376113755.jpg",
     bio: "Florian Seibel brings deep technical knowledge and a relentless drive for innovation. He is the engineering force behind numerous UAV advancements in Europe."
   },
 ];
