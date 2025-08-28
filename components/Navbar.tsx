@@ -338,14 +338,15 @@ export default function Navbar() {
                         Explore
                       </Link>
                       {hoveredUncrewedSystemDetails.droneImage && (
-                        <Image
-                          src={hoveredUncrewedSystemDetails.droneImage || "/placeholder.svg"}
-                          alt={`${hoveredUncrewedSystemDetails.headline} drone`}
-                          width={500}
-                          height={300}
-                          className="absolute bottom-0 right-0 w-[31.25rem] h-auto object-contain opacity-80"
-                          priority
-                        />
+                      <Image
+  src={hoveredUncrewedSystemDetails.droneImage || "/placeholder.svg"}
+  alt={`${hoveredUncrewedSystemDetails.headline} drone`}
+  width={500}
+  height={300}
+  className="absolute bottom-0 right-0 w-[31.25rem] h-auto object-contain opacity-80 invert brightness-200"
+  priority
+/>
+
                       )}
                     </>
                   ) : (
