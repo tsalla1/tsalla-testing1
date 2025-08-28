@@ -120,18 +120,18 @@ export default function BatPayLoad2(): React.JSX.Element {
             </div>
 
             {/* Right Column */}
-            <div className="w-full md:w-1/2">
-              <div className="flex flex-col">
-                {/* Product Image */}
-                <div className="bg-gray-100 p-4 rounded-lg mb-6">
-                  <img
-                    src="https://www.nextvision-sys.com/wp-content/uploads/2020/09/All-for-website.415.png"
-                    alt="NextVision Raptor-W Payload"
-                    className="w-full h-auto object-contain"
-                  />
-                </div>
-              </div>
-            </div>
+        <div className="w-full md:w-1/2">
+  <div className="flex flex-col">
+    {/* Product Image */}
+    <div className="mb-6">
+      <img
+        src="https://www.nextvision-sys.com/wp-content/uploads/2020/09/All-for-website.415.png"
+        alt="NextVision Raptor-W Payload"
+        className="w-full h-auto object-contain"
+      />
+    </div>
+  </div>
+</div>
           </div>
         </ContentWrapper>
       </section>

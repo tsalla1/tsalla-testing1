@@ -116,18 +116,18 @@ export default function BatpayLoad1(): React.JSX.Element {
             </div>
 
             {/* Right Column */}
-            <div className="w-full md:w-1/2">
-              <div className="flex flex-col">
-                {/* Product Image */}
-                <div className="bg-gray-100 p-4 rounded-lg">
-                  <img
-                    src="https://pro.sony/s3/2023/08/21131220/ILX-LR1-_-Hero-product-image-1.png"
-                    alt="Sony ILX-LR1 Camera"
-                    className="w-full h-auto object-contain"
-                  />
-                </div>
-              </div>
-            </div>
+             <div className="w-full md:w-1/2">
+  <div className="flex flex-col">
+    {/* Product Image */}
+    <div>
+      <img
+        src="https://pro.sony/s3/2023/08/21131220/ILX-LR1-_-Hero-product-image-1.png"
+        alt="Sony ILX-LR1 Camera"
+        className="w-full h-auto object-contain"
+      />
+    </div>
+  </div>
+</div>
           </div>
         </ContentWrapper>
       </section>

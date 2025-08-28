@@ -5,7 +5,6 @@ import { useState } from "react"
 import { ContentWrapper } from "@/components/ContentWrapper"
 
 // --- Accordion Item Component ---
-// Reusable component for displaying feature details.
 interface AccordionItemProps {
   title: string
   whatItMeans: string
@@ -16,10 +15,9 @@ interface AccordionItemProps {
 const AccordionItem: React.FC<AccordionItemProps> = ({ title, whatItMeans, keyBenefit, isOpen }) => {
   return (
     <div className="border-b border-gray-300 py-4 cursor-pointer">
-      {/* The header now uses flex to position the title and icon */}
+      {/* Header */}
       <div className="flex justify-between items-center">
         <h3 className="text-xl font-medium text-black">{title}</h3>
-        {/* SVG Icon with rotation transition */}
         <img
           src={
             isOpen ? "https://www.svgrepo.com/show/522421/minus.svg" : "https://www.svgrepo.com/show/522437/plus.svg"
@@ -28,9 +26,12 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ title, whatItMeans, keyBe
           className="w-6 h-6 transition-all duration-500 ease-in-out"
         />
       </div>
-      {/* Content expands/collapses with a smooth 500ms transition */}
+
+      {/* Content */}
       <div
-        className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? "max-h-96 mt-4" : "max-h-0"}`}
+        className={`overflow-hidden transition-all duration-500 ease-in-out ${
+          isOpen ? "max-h-96 mt-4" : "max-h-0"
+        }`}
       >
         <div className="text-gray-700 space-y-2">
           <p>
@@ -47,7 +48,6 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ title, whatItMeans, keyBe
 
 // --- Main Page Component ---
 export default function MicaSensePayload(): React.JSX.Element {
-  // All features are now in a single array for the left column.
   const features = [
     {
       title: "High-Res Multispectral Imaging",
@@ -75,7 +75,6 @@ export default function MicaSensePayload(): React.JSX.Element {
     },
   ]
 
-  // State to manage which accordion item is currently hovered.
   const [hoveredTitle, setHoveredTitle] = useState<string | null>(null)
 
   return (
@@ -86,9 +85,9 @@ export default function MicaSensePayload(): React.JSX.Element {
           font-family: 'Clash Grotesk', sans-serif;
         }
       `}</style>
+
       <section className="font-clash-grotesk bg-white w-full min-h-screen py-20">
         <ContentWrapper>
-          {/* Main Content Section */}
           <div className="flex flex-col md:flex-row gap-12 lg:gap-16">
             {/* Left Column */}
             <div className="w-full md:w-1/2">
@@ -109,18 +108,18 @@ export default function MicaSensePayload(): React.JSX.Element {
             </div>
 
             {/* Right Column */}
-            <div className="w-full md:w-1/2 flex items-center">
-              <div className="flex flex-col w-full">
-                {/* Product Image */}
-                <div className="bg-gray-100 p-4 rounded-lg">
-                  <img
-                    src="https://ageagle.com/wp-content/uploads/2022/06/RedEdge-P_700px_1.png"
-                    alt="MicaSense RedEdge-P Payload"
-                    className="w-full h-auto object-contain"
-                  />
-                </div>
-              </div>
-            </div>
+            <div className="w-full md:w-1/2">
+  <div className="flex flex-col w-full">
+    <div className="sticky top-24">
+      <img
+        src="https://ageagle.com/wp-content/uploads/2022/06/RedEdge-P_700px_1.png"
+        alt="MicaSense RedEdge-P Payload"
+        className="w-full h-auto object-contain"
+      />
+    </div>
+  </div>
+</div>
+
           </div>
         </ContentWrapper>
       </section>
