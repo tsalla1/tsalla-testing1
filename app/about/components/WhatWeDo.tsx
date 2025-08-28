@@ -22,7 +22,7 @@ export default function WhatWeDo() {
           <div className="w-full">
             <div className="relative w-full aspect-square md:h-[31.25rem] md:aspect-auto overflow-hidden">
               <Image
-                src="https://quantum-systems.com/wp-content/uploads/2025/05/QS_Blackned_03-scaled.jpg"
+                src="https://quantum-systems.com/wp-content/uploads/bf-advanced-images/6503/20240801-unmanned-CIHBW-16-800x800.jpg"
                 alt="City Aerial"
                 fill
                 className="object-cover"
