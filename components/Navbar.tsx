@@ -258,7 +258,7 @@ export default function Navbar() {
                 className="text-white p-2 hover:bg-white/10 rounded transition-colors"
                 aria-label="Toggle mobile menu"
               >
-                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
             </div>
           </div>
@@ -302,8 +302,8 @@ export default function Navbar() {
                           <div className="text-gray-400 text-sm mt-1 font-orbit">{link.description}</div>
                         </div>
                         <ArrowRight
-                          size={16}
-                          className="text-gray-600 group-hover:text-blue-400 group-hover:translate-x-1 transition-all"
+
+                          className="w-4 h-4 text-gray-600 group-hover:text-blue-400 group-hover:translate-x-1 transition-all"
                         />
                       </div>
                     </Link>
@@ -385,7 +385,7 @@ export default function Navbar() {
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <span className="animated-underline font-orbit">{item.name}</span>
-                  <Plus size={16} className="transform rotate-45" />
+                  <Plus className="w-4 h-4 transform rotate-45" />
                 </Link>
               ))}
             </div>
