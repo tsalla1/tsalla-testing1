@@ -1,8 +1,9 @@
-"use client";
+"use client"
 
-import React from 'react';
+import type React from "react"
+import { ContentWrapper } from "@/components/ContentWrapper"
 
-export default function Dexter_5(): JSX.Element {
+export default function BatLast(): React.JSX.Element {
   return (
     <>
       {/* Global Clash Grotesk font inclusion */}
@@ -20,21 +21,23 @@ export default function Dexter_5(): JSX.Element {
           alt="Abstract background"
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
-        
+
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/70 z-10"></div>
 
         {/* Content */}
-        <div className="relative z-20 h-full flex flex-col items-center justify-center text-center text-white px-4">
-          <h1 className="text-5xl md:text-7xl font-medium leading-tight max-w-4xl">
-            Ready to Deploy Where <br /> Others Cannot.
-          </h1>
-          {/* The button is now square and the text is not bold */}
-          <button className="mt-8 bg-white/10 border border-white/20 backdrop-blur-sm text-white py-3 px-8 hover:bg-white/20 transition-colors duration-300">
-            Request a Demo
-          </button>
+        <div className="relative z-20 h-full flex flex-col items-center justify-center text-center text-white">
+          <ContentWrapper>
+            <h1 className="text-5xl md:text-7xl font-medium leading-tight max-w-4xl">
+              Ready to Deploy Where <br /> Others Cannot.
+            </h1>
+            {/* The button is now square and the text is not bold */}
+            <button className="mt-8 bg-white/10 border border-white/20 backdrop-blur-sm text-white py-3 px-8 hover:bg-white/20 transition-colors duration-300">
+              Request a Demo
+            </button>
+          </ContentWrapper>
         </div>
       </section>
     </>
-  );
+  )
 }
