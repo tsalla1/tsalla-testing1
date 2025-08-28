@@ -128,9 +128,9 @@ const megaMenuData = {
 
 const navigationItems = [
   { name: "MAVERICK", href: "/maverick" },
-  { name: "SPACE SYSTEMS", href: "/hardware" },
   { name: "UNCREWED SYSTEMS", href: "/uncrewedsystems" },
   { name: "COUNTER SYSTEMS", href: "/countersystems" },
+  { name: "SPACE SYSTEMS", href: "/hardware" },
   { name: "COMPANY", href: "/about" },
   { name: "JOIN THE MISSION", href: "/careers" },
 ]
@@ -215,7 +215,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-20 border-b border-white/100 px-4">
             <Link href="/" className="flex items-center z-50 pl-4 lg:ml-12">
               <Image
-                src="/tsalla_logo2.svg"
+                src="/tsalla_main.svg"
                 alt="Tsalla Aerospace"
                 width={260}
                 height={70}
