@@ -13,11 +13,7 @@ interface ProfileCardProps {
 
 // Reusable component for a full-screen profile slide
 const ProfileCard: React.FC<ProfileCardProps> = ({ title, imageUrl, description, hasHighlight = false }) => (
-  <div
-    className={`w-screen h-screen flex-shrink-0 relative snap-start ${
-      hasHighlight ? "ring-4 ring-blue-500 ring-inset" : ""
-    }`}
-  >
+  <div className={`w-screen h-screen flex-shrink-0 relative ${hasHighlight ? "ring-4 ring-blue-500 ring-inset" : ""}`}>
     {/* Background Image */}
     <img
       src={imageUrl || "/placeholder.svg"}
@@ -83,6 +79,40 @@ export default function FenixMissionProfiles(): React.JSX.Element {
     },
   ]
 
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const horizontalTrackRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current
+    const horizontalTrack = horizontalTrackRef.current
+
+    if (!scrollContainer || !horizontalTrack) return
+
+    const handleScroll = () => {
+      const scrollY = window.scrollY
+      const containerTop = scrollContainer.offsetTop
+      const containerHeight = scrollContainer.offsetHeight
+      const viewportHeight = window.innerHeight
+
+      // Check if the user is scrolling within the horizontal section
+      if (scrollY >= containerTop && scrollY <= containerTop + containerHeight - viewportHeight) {
+        const scrollableHeight = containerHeight - viewportHeight
+        const scrollProgress = (scrollY - containerTop) / scrollableHeight
+
+        const maxHorizontalScroll = horizontalTrack.scrollWidth - viewportHeight
+        const horizontalScrollValue = scrollProgress * maxHorizontalScroll
+
+        horizontalTrack.style.transform = `translateX(-${horizontalScrollValue}px)`
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll)
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [])
+
   return (
     <>
       <style>{`
@@ -91,37 +121,39 @@ export default function FenixMissionProfiles(): React.JSX.Element {
           font-family: "Clash Grotesk", sans-serif !important;
         }
         body {
-          background-color: #000;
-          overflow: hidden; 
-        }
-        .scroll-container::-webkit-scrollbar {
-          display: none; 
-        }
-        .scroll-container {
-          -ms-overflow-style: none;
-          scrollbar-width: none; 
+          background-color: #000; /* Ensure body background is black */
         }
       `}</style>
 
-      <main className="font-clash-grotesk text-white h-screen w-full flex overflow-x-auto snap-x snap-mandatory scroll-container">
-        {/* Introductory Slide */}
-        <div className="w-screen h-screen flex-shrink-0 flex flex-col items-center justify-center text-center p-8 snap-start">
-          <h1 className="text-6xl font-medium tracking-tight">Mission Profiles</h1>
-          <p className="text-lg text-gray-400 mt-3">Engineered for reliability in critical scenarios.</p>
-          <p className="mt-20 text-gray-500 animate-pulse text-sm">Scroll to Explore</p>
+      {/* This container provides the vertical scroll height to drive the animation. */}
+      <div ref={scrollContainerRef} style={{ height: `${(allProfiles.length + 1) * 100}vh` }} className="relative">
+        {/* This sticky container holds the horizontal track in place while scrolling. */}
+        <div className="sticky top-0 h-screen w-full overflow-hidden">
+          <main
+            ref={horizontalTrackRef}
+            className="font-clash-grotesk text-white h-full flex relative"
+            style={{ width: `${(allProfiles.length + 1) * 100}vw` }}
+          >
+            {/* Introductory Slide */}
+            <div className="w-screen h-screen flex-shrink-0 flex flex-col items-center justify-center text-center p-8">
+              <h1 className="text-6xl font-medium tracking-tight">Mission Profiles</h1>
+              <p className="text-lg text-gray-400 mt-3">Engineered for reliability in critical scenarios.</p>
+              <p className="mt-20 text-gray-500 animate-pulse text-sm">Scroll Down to Explore</p>
+            </div>
+
+            {/* Map through all profiles to create a slide for each */}
+            {allProfiles.map((profile) => (
+              <ProfileCard key={profile.title} {...profile} />
+            ))}
+          </main>
         </div>
+      </div>
 
-        {/* Map through all profiles to create a slide for each */}
-        {allProfiles.map((profile) => (
-          <ProfileCard key={profile.title} {...profile} />
-        ))}
-
-        {/* This is the next section that appears after the horizontal scroll is complete. */}
-        <section className="w-screen h-screen flex-shrink-0 bg-white text-black flex flex-col items-center justify-center text-center snap-start">
-          <h2 className="text-5xl font-bold">Next Section</h2>
-          <p className="mt-4 text-lg">You have finished scrolling through the missions.</p>
-        </section>
-      </main>
+      {/* This is the next section that appears after the horizontal scroll is complete. */}
+      <section className="h-screen bg-white text-black flex flex-col items-center justify-center text-center">
+        <h2 className="text-5xl font-bold">Next Section</h2>
+        <p className="mt-4 text-lg">You have finished scrolling through the missions.</p>
+      </section>
     </>
   )
 }
