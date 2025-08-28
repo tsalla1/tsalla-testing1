@@ -128,9 +128,9 @@ const megaMenuData = {
 
 const navigationItems = [
   { name: "MAVERICK", href: "/maverick" },
+  { name: "SPACE SYSTEMS", href: "/hardware" },
   { name: "UNCREWED SYSTEMS", href: "/uncrewedsystems" },
   { name: "COUNTER SYSTEMS", href: "/countersystems" },
-  { name: "SPACE SYSTEMS", href: "/hardware" },
   { name: "COMPANY", href: "/about" },
   { name: "JOIN THE MISSION", href: "/careers" },
 ]
@@ -212,17 +212,18 @@ export default function Navbar() {
   `}
       >
         <div className="w-full">
-  <div className="flex items-center justify-between h-20 border-b border-white/100 px-4">
-    <Link href="/" className="flex items-center z-50 pl-4 lg:ml-12">
-      <Image
-        src="https://cdn.sanity.io/images/9w6n0tb6/production/90ff25341f9fe27568979e0a23b931f27301a163-376x145.svg"
-        alt="Tsalla Aerospace"
-        width={260}
-        height={70}
-        className="h-12 sm:h-14 md:h-16 w-auto brightness-0 invert"
-        priority
-      />
-    </Link>
+          <div className="flex items-center justify-between h-20 border-b border-white/100 px-4">
+            <Link href="/" className="flex items-center z-50 pl-4 lg:ml-12">
+              <Image
+                src="/tsalla_logo2.svg"
+                alt="Tsalla Aerospace"
+                width={260}
+                height={70}
+                className="h-12 sm:h-14 md:h-16 w-auto brightness-150 contrast-125"
+                priority
+              />
+            </Link>
+
             <div className="hidden lg:flex items-center h-full border-l border-white/30 pr-14">
               {navigationItems.map((item, index) => (
                 <div
