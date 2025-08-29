@@ -20,7 +20,9 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ title, whatItMeans, keyBe
         <h3 className="text-xl font-medium text-black">{title}</h3>
         <img
           src={
-            isOpen ? "https://www.svgrepo.com/show/522421/minus.svg" : "https://www.svgrepo.com/show/522437/plus.svg"
+            isOpen
+              ? "https://www.svgrepo.com/show/522421/minus.svg"
+              : "https://www.svgrepo.com/show/522437/plus.svg"
           }
           alt="Toggle Details"
           className="w-6 h-6 transition-all duration-500 ease-in-out"
@@ -88,12 +90,15 @@ export default function MicaSensePayload(): React.JSX.Element {
 
       <section className="font-clash-grotesk bg-white w-full min-h-screen py-20">
         <ContentWrapper>
-          <div className="flex flex-col md:flex-row gap-12 lg:gap-16">
-            {/* Left Column */}
-            <div className="w-full md:w-1/2">
-              <h1 className="text-6xl md:text-7xl font-medium tracking-tight text-black leading-tight mb-12">
-                MicaSense RedEdge-P <br /> Payload
-              </h1>
+          {/* Heading spans both columns */}
+          <h1 className="text-6xl md:text-7xl font-medium tracking-tight text-black leading-tight mb-16 text-center md:text-left">
+            MicaSense RedEdge-P <br /> Payload
+          </h1>
+
+          {/* Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-start">
+            {/* Left Column (Accordion) */}
+            <div>
               <div className="flex flex-col">
                 {features.map((feature) => (
                   <div
@@ -107,22 +112,20 @@ export default function MicaSensePayload(): React.JSX.Element {
               </div>
             </div>
 
-            {/* Right Column */}
-            <div className="w-full md:w-1/2">
-  <div className="flex flex-col w-full">
-    <div className="sticky top-24">
-      <img
-        src="https://ageagle.com/wp-content/uploads/2022/06/RedEdge-P_700px_1.png"
-        alt="MicaSense RedEdge-P Payload"
-        className="w-full h-auto object-contain"
-      />
-    </div>
-  </div>
-</div>
-
+            {/* Right Column (Image) */}
+            <div className="flex flex-col w-full">
+              <div className="sticky top-24">
+                <img
+                  src="https://ageagle.com/wp-content/uploads/2022/06/RedEdge-P_700px_1.png"
+                  alt="MicaSense RedEdge-P Payload"
+                  className="w-full h-auto object-contain"
+                />
+              </div>
+            </div>
           </div>
         </ContentWrapper>
       </section>
+       <div className="w-full h-px bg-black" />
     </>
   )
 }

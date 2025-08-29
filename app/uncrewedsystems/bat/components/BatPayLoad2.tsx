@@ -125,7 +125,7 @@ export default function BatPayLoad2(): React.JSX.Element {
     {/* Product Image */}
     <div className="mb-6">
       <img
-        src="https://www.nextvision-sys.com/wp-content/uploads/2020/09/All-for-website.415.png"
+        src="https://cdn.sanity.io/images/9w6n0tb6/production/88fab3a74f0c1658a8e8e8d496f1ca06b00a05ac-616x726.png"
         alt="NextVision Raptor-W Payload"
         className="w-full h-auto object-contain"
       />

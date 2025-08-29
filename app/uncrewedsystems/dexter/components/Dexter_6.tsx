@@ -123,9 +123,9 @@ export default function dexter_6(): React.JSX.Element {
             <div className="w-full md:w-1/2">
               <div className="flex flex-col">
                 {/* Product Image */}
-                <div className="bg-gray-100 p-4 rounded-lg mb-6">
+                <div className=" p-4 rounded-lg mb-6">
                   <img
-                    src="https://www.nextvision-sys.com/wp-content/uploads/2020/12/Dragoneye2.png"
+                    src="https://cdn.sanity.io/images/9w6n0tb6/production/1a0050c94832c75b0ce162c14d56ea20b0c736c6-310x297.png"
                     alt="NextVision DragonEye 2 Surveillance Payload"
                     className="w-full h-auto object-contain"
                   />

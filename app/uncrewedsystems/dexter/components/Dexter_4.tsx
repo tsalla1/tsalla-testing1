@@ -127,9 +127,9 @@ export default function Dexter_5(): React.JSX.Element {
             <div className="w-full md:w-1/2">
               <div className="flex flex-col gap-8">
                 {/* Product Image */}
-                <div className="bg-gray-100 p-4 rounded-lg">
+                <div className=" p-4 rounded-lg">
                   <img
-                    src="https://pro.sony/s3/2023/08/21131220/ILX-LR1-_-Hero-product-image-1.png"
+                    src="https://cdn.sanity.io/images/9w6n0tb6/production/3efb323c85cf4b1583dc48c6cb043329901ebf22-688x546.png"
                     alt="Sony ILX-LR1 Camera"
                     className="w-full h-auto object-contain"
                   />

@@ -121,7 +121,7 @@ export default function BatpayLoad1(): React.JSX.Element {
     {/* Product Image */}
     <div>
       <img
-        src="https://pro.sony/s3/2023/08/21131220/ILX-LR1-_-Hero-product-image-1.png"
+        src="https://cdn.sanity.io/images/9w6n0tb6/production/3efb323c85cf4b1583dc48c6cb043329901ebf22-688x546.png"
         alt="Sony ILX-LR1 Camera"
         className="w-full h-auto object-contain"
       />

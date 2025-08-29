@@ -20,7 +20,7 @@ const megaMenuData = {
         details: {
           headline: "DEXTER",
           subheadline: "Multirole Single Solution",
-          droneImage: "/drone-wireframe.png",
+          droneImage: "https://cdn.sanity.io/images/9w6n0tb6/production/101b9343ed992a1e1edb0b1eaa7173f2a7ea4308-2384x1684.svg",
         },
       },
       {
@@ -338,16 +338,15 @@ export default function Navbar() {
                         Explore
                       </Link>
                       {hoveredUncrewedSystemDetails.droneImage && (
-                      <Image
-  src={hoveredUncrewedSystemDetails.droneImage || "/placeholder.svg"}
-  alt={`${hoveredUncrewedSystemDetails.headline} drone`}
-  width={500}
-  height={300}
-  className="absolute bottom-0 right-0 w-[31.25rem] h-auto object-contain opacity-80 invert brightness-200"
-  priority
-/>
-
-                      )}
+  <Image
+    src={hoveredUncrewedSystemDetails.droneImage || "/placeholder.svg"}
+    alt={`${hoveredUncrewedSystemDetails.headline} drone`}
+    width={500}
+    height={300}
+    className="absolute bottom-0 right-0 w-[31.25rem] h-auto object-contain opacity-80 invert brightness-200"
+    priority
+  />
+)}
                     </>
                   ) : (
                     <>
