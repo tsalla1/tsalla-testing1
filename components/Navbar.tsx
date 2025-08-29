@@ -20,7 +20,7 @@ const megaMenuData = {
         details: {
           headline: "DEXTER",
           subheadline: "Multirole Single Solution",
-          droneImage: "https://cdn.sanity.io/images/9w6n0tb6/production/93db248798d139da784f45563173775fd74dfdc2-1707x1205.png",
+          droneImage: "https://cdn.sanity.io/images/9w6n0tb6/production/d1d0466a1d875feae95036da6f497302a537d9ca-1707x1207.png",
         },
       },
       {
@@ -31,7 +31,7 @@ const megaMenuData = {
           headline: "FENIX",
           subheadline: "Fast Entry Navigational <br />Intrusion eXplorer",
           droneImage:
-            "https://cdn.sanity.io/images/9w6n0tb6/production/a44367c95c239a24c5bbf8651eac1e83dbd99bc7-1280x905.svg",
+            "https://cdn.sanity.io/images/9w6n0tb6/production/4c840367c7d0ff1e0d69011e86932a7730a8c4f3-1707x1207.png",
         },
       },
       {
@@ -51,9 +51,9 @@ const megaMenuData = {
         description: "Smart Transport Operations for Rugged Missions",
         details: {
           headline: "STORM",
-          subheadline: "Smart Transport Operations for Rugged Missions",
+          subheadline: "Smart Transport Operations  <br /> for Rugged Missions",
           droneImage:
-            "https://cdn.sanity.io/images/9w6n0tb6/production/d898d9ab6caea78a033f6ea0ed2b82e321367cfe-1707x1207.png",
+            "https://cdn.sanity.io/images/9w6n0tb6/production/42b4a626568836e203e5376d9b9765bcf0333a85-1707x1207.png",
         },
       },
     ],
@@ -302,7 +302,6 @@ export default function Navbar() {
                           <div className="text-gray-400 text-sm mt-1 font-orbit">{link.description}</div>
                         </div>
                         <ArrowRight
-
                           className="w-4 h-4 text-gray-600 group-hover:text-blue-400 group-hover:translate-x-1 transition-all"
                         />
                       </div>
@@ -310,13 +309,12 @@ export default function Navbar() {
                   ))}
                 </div>
               </div>
-             <div
+              <div
                 className={cn(
                   "w-1/2 py-8 transition-all duration-500 ease-in-out relative overflow-hidden",
-    activeMegaMenu === "/uncrewedsystems"
-      // Changed the overlay from 50% (0.5) to 30% (0.3) opacity
-      ? "bg-[linear-gradient(rgba(0,0,0,0.3),_rgba(0,0,0,0.3)),url('/blueprint-background.png')] bg-cover bg-center text-white"
-      : "bg-white text-black",
+                  activeMegaMenu === "/uncrewedsystems"
+                    ? "bg-[linear-gradient(rgba(0,0,0,0.3),_rgba(0,0,0,0.3)),url('/blueprint-background.png')] bg-cover bg-center text-white"
+                    : "bg-white text-black",
                 )}
               >
                 {activeMegaMenu === "/uncrewedsystems" && <div className="absolute inset-0 bg-black opacity-30" />}
@@ -326,10 +324,10 @@ export default function Navbar() {
                       <h2 className="text-5xl font-bold leading-tight tracking-wide font-orbit">
                         {hoveredUncrewedSystemDetails.headline}
                       </h2>
-                     <p
-  className="text-lg leading-relaxed mt-2 mb-6 font-orbit"
-  dangerouslySetInnerHTML={{ __html: hoveredUncrewedSystemDetails.subheadline }}
-/>
+                      <p
+                        className="text-lg leading-relaxed mt-2 mb-6 font-orbit"
+                        dangerouslySetInnerHTML={{ __html: hoveredUncrewedSystemDetails.subheadline }}
+                      />
 
                       <Link
                         href={hoveredUncrewedSystemDetails.href || "#"}
@@ -338,15 +336,16 @@ export default function Navbar() {
                         Explore
                       </Link>
                       {hoveredUncrewedSystemDetails.droneImage && (
-  <Image
-    src={hoveredUncrewedSystemDetails.droneImage || "/placeholder.svg"}
-    alt={`${hoveredUncrewedSystemDetails.headline} drone`}
-    width={500}
-    height={300}
-    className="absolute bottom-0 right-0 w-[31.25rem] h-auto object-contain opacity-80 invert brightness-200"
-    priority
-  />
-)}
+                        <Image
+                          src={hoveredUncrewedSystemDetails.droneImage || "/placeholder.svg"}
+                          alt={`${hoveredUncrewedSystemDetails.headline} drone`}
+                          width={650}
+                          height={500}
+                          // MODIFIED LINE: Changed right to -130px to move it 50% left from previous
+                          className="absolute bottom-0 right-[-130px] w-[500px] max-w-none h-auto object-contain opacity-80 invert brightness-200 z-10"
+                          priority
+                        />
+                      )}
                     </>
                   ) : (
                     <>
