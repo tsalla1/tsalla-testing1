@@ -20,7 +20,7 @@ const megaMenuData = {
         details: {
           headline: "DEXTER",
           subheadline: "Multirole Single Solution",
-          droneImage: "https://cdn.sanity.io/images/9w6n0tb6/production/101b9343ed992a1e1edb0b1eaa7173f2a7ea4308-2384x1684.svg",
+          droneImage: "https://cdn.sanity.io/images/9w6n0tb6/production/93db248798d139da784f45563173775fd74dfdc2-1707x1205.png",
         },
       },
       {
@@ -42,7 +42,7 @@ const megaMenuData = {
           headline: "BAT",
           subheadline: "Battlefield Aerial Tactical UAS",
           droneImage:
-            "https://cdn.sanity.io/images/9w6n0tb6/production/3deadbbfea4089018be296a4e28183d92f59206d-1280x720.svg",
+            "https://cdn.sanity.io/images/9w6n0tb6/production/59638385bd840eeec0d9986948452b0046ef63a7-1707x1207.png",
         },
       },
       {
@@ -53,7 +53,7 @@ const megaMenuData = {
           headline: "STORM",
           subheadline: "Smart Transport Operations for Rugged Missions",
           droneImage:
-            "https://cdn.sanity.io/images/z5s3oquj/production/6c9bf5d85318362ed027710dda593420eea26008-4000x2784.png?auto=format&fit=max&w=1920&q=90",
+            "https://cdn.sanity.io/images/9w6n0tb6/production/d898d9ab6caea78a033f6ea0ed2b82e321367cfe-1707x1207.png",
         },
       },
     ],
