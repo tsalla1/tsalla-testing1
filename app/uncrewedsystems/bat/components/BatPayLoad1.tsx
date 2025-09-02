@@ -87,7 +87,7 @@ export default function BatpayLoad1(): React.JSX.Element {
         <ContentWrapper>
           {/* Main Header */}
           <div className="mb-12">
-            <h1 className="text-5xl md:text-6xl font-medium tracking-tight text-black">
+            <h1 className="text-4xl md:text-4xl font-medium tracking-tight text-black">
               ILX-LR1 - Sony Pro <br />
               Mapping Payload
             </h1>
@@ -119,7 +119,7 @@ export default function BatpayLoad1(): React.JSX.Element {
              <div className="w-full md:w-1/2">
   <div className="flex flex-col">
     {/* Product Image */}
-    <div>
+    <div className="md:-mt-32 -mt-8" >
       <img
         src="https://cdn.sanity.io/images/9w6n0tb6/production/3efb323c85cf4b1583dc48c6cb043329901ebf22-688x546.png"
         alt="Sony ILX-LR1 Camera"

@@ -20,8 +20,8 @@ const NewsroomCard: React.FC<NewsroomCardProps> = ({
 }) => {
   return (
     <div className="newsroom-card flex flex-col bg-transparent text-black group">
-      {/* Image */}
-      <div className="relative w-full h-48 md:h-56 lg:h-64 overflow-hidden mb-4 rounded-md">
+      {/* Image with hover movement */}
+      <div className="relative w-full h-48 md:h-56 lg:h-64 overflow-hidden mb-4 rounded-md group">
         <Image
           src={imageUrl || "/placeholder.svg"}
           alt={title}
@@ -39,18 +39,17 @@ const NewsroomCard: React.FC<NewsroomCardProps> = ({
         {title}
       </h3>
 
-      {/* Read More Link with underline animation */}
+      {/* Read More Link with underline + arrow animation (same as Newsletter) */}
       <Link
         href={readMoreLink}
-        className="relative inline-flex items-center text-sm font-medium text-black group"
+        className="inline-flex items-center text-black group text-sm font-medium transition-all duration-200"
       >
-        <span className="relative z-10 mr-2">
+        <span className="relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[0.125rem] after:bg-black after:transition-all after:duration-300 group-hover:after:w-full">
           Read More
-          <span className="block h-[1px] w-0 bg-black transition-all duration-300 group-hover:w-full" />
         </span>
         <ArrowRight
           size={16}
-          className="transition-transform duration-200 transform group-hover:translate-x-1"
+          className="ml-2 transition-transform duration-200 group-hover:translate-x-1"
         />
       </Link>
 

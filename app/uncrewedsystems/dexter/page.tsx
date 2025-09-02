@@ -23,12 +23,12 @@ export default function DexterPage() {
     <PageWrapper>
       <DexterHero />
        <DexterCapabilities />
-     {/* <DexterSpecifications />*/}
       <Dexter1 />
       <Dexter_2/>
       <Dexter_3/>
       <Dexter_6/>
        <Dexter_4/>
+       <DexterSpecifications />
       <Dexter_5/>
     </PageWrapper>
   )

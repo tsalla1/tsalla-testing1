@@ -5,7 +5,6 @@ import { useState } from "react"
 import { ContentWrapper } from "@/components/ContentWrapper"
 
 // --- Accordion Item Component ---
-// Reusable component for displaying feature details.
 interface AccordionItemProps {
   title: string
   whatItMeans: string
@@ -26,7 +25,6 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ title, whatItMeans, keyBe
           className="w-6 h-6"
         />
       </div>
-      {/* Content expands/collapses on hover with a smooth 500ms transition */}
       <div
         className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? "max-h-96 mt-4" : "max-h-0"}`}
       >
@@ -45,7 +43,6 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ title, whatItMeans, keyBe
 
 // --- Main Page Component ---
 export default function BatPayLoad2(): React.JSX.Element {
-  // All features are now in a single array for the left column.
   const features = [
     {
       title: "EO Zoom Camera",
@@ -71,7 +68,6 @@ export default function BatPayLoad2(): React.JSX.Element {
     },
   ]
 
-  // State to manage which accordion item is currently hovered.
   const [hoveredTitle, setHoveredTitle] = useState<string | null>(null)
 
   return (
@@ -84,7 +80,6 @@ export default function BatPayLoad2(): React.JSX.Element {
       `}</style>
       <section className="font-clash-grotesk bg-white w-full min-h-screen py-20">
         <ContentWrapper>
-          {/* Top Header Section */}
           <div className="flex flex-col md:flex-row justify-between gap-8 mb-16">
             <div className="w-full md:w-1/2">
               <h1 className="text-6xl md:text-7xl font-medium tracking-tight text-black leading-tight">
@@ -99,9 +94,7 @@ export default function BatPayLoad2(): React.JSX.Element {
             </div>
           </div>
 
-          {/* Main Content Section */}
           <div className="flex flex-col md:flex-row gap-12 lg:gap-16">
-            {/* Left Column */}
             <div className="w-full md:w-1/2">
               <h2 className="text-4xl font-medium text-black mb-6">
                 NextVision Colibri 2 <br /> Mapping Payload
@@ -120,22 +113,20 @@ export default function BatPayLoad2(): React.JSX.Element {
             </div>
 
             {/* Right Column */}
-        <div className="w-full md:w-1/2">
-  <div className="flex flex-col">
-    {/* Product Image */}
-    <div className="mb-6">
-      <img
-        src="https://cdn.sanity.io/images/9w6n0tb6/production/88fab3a74f0c1658a8e8e8d496f1ca06b00a05ac-616x726.png"
-        alt="NextVision Raptor-W Payload"
-        className="w-full h-auto object-contain"
-      />
-    </div>
-  </div>
-</div>
+            <div className="w-full md:w-1/2 flex items-start -mt-24">
+              <div className="flex flex-col">
+                <div className="mb-6">
+                  <img
+                    src="https://cdn.sanity.io/images/9w6n0tb6/production/88fab3a74f0c1658a8e8e8d496f1ca06b00a05ac-616x726.png"
+                    alt="NextVision Raptor-W Payload"
+                    className="w-full h-auto object-contain scale-[0.7]"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </ContentWrapper>
       </section>
-      {/* Black horizontal line separator */}
       <div className="w-full h-px bg-black" />
     </>
   )
