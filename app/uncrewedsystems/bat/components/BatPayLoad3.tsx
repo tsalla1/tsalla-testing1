@@ -91,7 +91,7 @@ export default function MicaSensePayload(): React.JSX.Element {
       <section className="font-clash-grotesk bg-white w-full min-h-screen py-20">
         <ContentWrapper>
           {/* Heading spans both columns */}
-          <h1 className="text-6xl md:text-7xl font-medium tracking-tight text-black leading-tight mb-16 text-center md:text-left">
+          <h1 className="text-4xl md:text-4xl font-medium tracking-tight text-black leading-tight mb-16 text-center md:text-left">
             MicaSense RedEdge-P <br /> Payload
           </h1>
 
@@ -114,11 +114,12 @@ export default function MicaSensePayload(): React.JSX.Element {
 
             {/* Right Column (Image) */}
             <div className="flex flex-col w-full">
-              <div className="sticky top-24">
+              <div className="sticky top-24 md:-mt-32 -mt-8">
                 <img
-                  src="https://ageagle.com/wp-content/uploads/2022/06/RedEdge-P_700px_1.png"
+                  src="https://www.jouav.com/wp-content/uploads/2022/07/Micasense-Rededge-P.jpg"
                   alt="MicaSense RedEdge-P Payload"
-                  className="w-full h-auto object-contain"
+                   className="w-full h-auto object-contain"
+                  
                 />
               </div>
             </div>
