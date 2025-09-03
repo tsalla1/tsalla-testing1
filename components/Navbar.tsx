@@ -402,7 +402,7 @@ export default function Navbar() {
       animate={{ x: 0, opacity: 1 }}
       exit={{ x: 200, opacity: 0 }}
       transition={{ type: "tween", stiffness: 10, damping: 20 }}
-      className="absolute bottom-0 right-[-2px] w-[500px] max-w-none h-auto object-contain opacity-80 invert brightness-200 z-10"
+      className="absolute bottom-0 right-[-2px] w-full h-auto object-contain opacity-80 invert brightness-200 z-10"
     >
       <Image
         src={hoveredUncrewedSystemDetails.droneImage || "/placeholder.svg"}
@@ -417,10 +417,10 @@ export default function Navbar() {
                     </>
                   ) : (
                     <>
-                      <h2 className="text-3xl font-bold leading-tight font-orbit mb-4">
+                      <h2 className="text-2xl md:text-3xl font-bold leading-tight font-orbit mb-4">
                         {megaMenuData[activeMegaMenu as keyof typeof megaMenuData]?.title}
                       </h2>
-                      <p className="text-lg leading-relaxed font-orbit">
+                      <p className="text-base md:text-lg leading-relaxed font-orbit">
                         {megaMenuData[activeMegaMenu as keyof typeof megaMenuData]?.description}
                       </p>
                     </>
