@@ -316,9 +316,9 @@ export default function Navbar() {
           {activeMegaMenu && megaMenuData[activeMegaMenu as keyof typeof megaMenuData] && (
             <motion.div
               key={activeMegaMenu}
-              initial={{ clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)', skewX: 0.5 }}
-              animate={{ clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', skewX: 0 }}
-              exit={{ clipPath: 'polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)', skewX: -0.5 }}
+              initial={{ clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)' }}
+              animate={{ clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' }}
+              exit={{ clipPath: 'polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)' }}
               transition={{ duration: 0.35, ease: "easeInOut" }}
               className="absolute top-full left-0 right-0 bg-black border-b border-white/20 shadow-2xl z-40"
               onMouseEnter={handleMouseEnterMegaMenu}
