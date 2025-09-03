@@ -225,9 +225,6 @@ export default function Navbar() {
     setActiveMegaMenu(href)
     if (href !== "/uncrewedsystems") {
       setHoveredUncrewedSystemDetails(null)
-    } else {
-      // Set initial details for the first item when hovering over "UNCREWED SYSTEMS"
-      setHoveredUncrewedSystemDetails(megaMenuData["/uncrewedsystems"].links[0].details);
     }
   }
 
@@ -313,7 +310,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        <AnimatePresence>
+            <AnimatePresence>
           {activeMegaMenu && megaMenuData[activeMegaMenu as keyof typeof megaMenuData] && (
             <motion.div
               key={activeMegaMenu}
@@ -373,7 +370,7 @@ export default function Navbar() {
                 </div>
                 <div
                   className={cn(
-                    "w-1/2 py-8 px-8 transition-all duration-500 ease-in-out relative overflow-hidden flex flex-col",
+                    "w-1/2 py-8 px-8 transition-all duration-500  ease-in-out relative overflow-hidden flex flex-col",
                     activeMegaMenu === "/uncrewedsystems"
                       ? "bg-[linear-gradient(rgba(0,0,0,0.3),_rgba(0,0,0,0.3)),url('/blueprint-background.png')] bg-cover bg-center text-white"
                       : "bg-white text-black",
@@ -385,7 +382,7 @@ export default function Navbar() {
                         <h2 className="text-4xl font-bold leading-tight tracking-wide font-orbit mb-4">
                           {hoveredUncrewedSystemDetails.headline}
                         </h2>
-                        <p
+                        <p 
                           className="text-lg leading-relaxed mb-6 font-orbit"
                           dangerouslySetInnerHTML={{ __html: hoveredUncrewedSystemDetails.subheadline }}
                         />
@@ -402,10 +399,10 @@ export default function Navbar() {
                         {hoveredUncrewedSystemDetails.droneImage && (
                           <motion.div
                             key={hoveredUncrewedSystemDetails.droneImage}
-                            initial={{ opacity: 0, scale: 0.95 }} // New initial state: faded out and slightly smaller
-                            animate={{ opacity: 1, scale: 1 }}     // New animate state: fully visible and normal size
-                            exit={{ opacity: 0, scale: 0.95 }}     // New exit state: faded out and slightly smaller
-                            transition={{ duration: 0.4, ease: "easeOut" }} // Adjust duration and easing
+                            initial={{ x: 200, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            exit={{ x: 200, opacity: 0 }}
+                            transition={{ duration: 0.5, ease: "easeOut" }}
                             className="absolute bottom-0 right-[-2px] w-[500px] max-w-none h-auto object-contain opacity-80 invert brightness-200 z-10"
                           >
                             <Image
@@ -434,6 +431,7 @@ export default function Navbar() {
             </motion.div>
           )}
         </AnimatePresence>
+
       </nav>
 
       {mobileMenuOpen && (
