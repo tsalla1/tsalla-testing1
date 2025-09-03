@@ -370,7 +370,7 @@ export default function Navbar() {
                 </div>
                 <div
                   className={cn(
-                    "w-1/2 py-8 px-4 lg:px-8 transition-all duration-500  ease-in-out relative overflow-hidden flex flex-col",
+                    "w-1/2 py-8 px-8 transition-all duration-500  ease-in-out relative overflow-hidden flex flex-col",
                     activeMegaMenu === "/uncrewedsystems"
                       ? "bg-[linear-gradient(rgba(0,0,0,0.3),_rgba(0,0,0,0.3)),url('/blueprint-background.png')] bg-cover bg-center text-white"
                       : "bg-white text-black",
@@ -379,11 +379,11 @@ export default function Navbar() {
                   {activeMegaMenu === "/uncrewedsystems" && hoveredUncrewedSystemDetails ? (
                     <>
                       <div className="flex-1">
-                        <h2 className="text-3xl xl:text-4xl font-bold leading-tight tracking-wide font-orbit mb-4">
+                        <h2 className="text-4xl font-bold leading-tight tracking-wide font-orbit mb-4">
                           {hoveredUncrewedSystemDetails.headline}
                         </h2>
                         <p 
-                          className="text-base xl:text-lg leading-relaxed mb-6 font-orbit"
+                          className="text-lg leading-relaxed mb-6 font-orbit"
                           dangerouslySetInnerHTML={{ __html: hoveredUncrewedSystemDetails.subheadline }}
                         />
                       </div>
@@ -403,7 +403,7 @@ export default function Navbar() {
                             animate={{ x: 0, opacity: 1 }}
                             exit={{ x: 200, opacity: 0 }}
                             transition={{ duration: 0.5, ease: "easeOut" }}
-                            className="absolute bottom-0 right-[-2px] w-full max-w-full h-auto object-contain opacity-80 invert brightness-200 z-10"
+                            className="absolute bottom-0 right-[-2px] w-[500px] max-w-none h-auto object-contain opacity-80 invert brightness-200 z-10"
                           >
                             <Image
                               src={hoveredUncrewedSystemDetails.droneImage || "/placeholder.svg"}
@@ -418,10 +418,10 @@ export default function Navbar() {
                     </>
                   ) : (
                     <>
-                      <h2 className="text-2xl xl:text-3xl font-bold leading-tight font-orbit mb-4">
+                      <h2 className="text-3xl font-bold leading-tight font-orbit mb-4">
                         {megaMenuData[activeMegaMenu as keyof typeof megaMenuData]?.title}
                       </h2>
-                      <p className="text-base xl:text-lg leading-relaxed font-orbit">
+                      <p className="text-lg leading-relaxed font-orbit">
                         {megaMenuData[activeMegaMenu as keyof typeof megaMenuData]?.description}
                       </p>
                     </>
