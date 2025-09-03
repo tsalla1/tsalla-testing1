@@ -225,6 +225,8 @@ export default function Navbar() {
     setActiveMegaMenu(href)
     if (href !== "/uncrewedsystems") {
       setHoveredUncrewedSystemDetails(null)
+    } else {
+      setHoveredUncrewedSystemDetails(megaMenuData["/uncrewedsystems"].links[0].details);
     }
   }
 
@@ -310,14 +312,14 @@ export default function Navbar() {
           </div>
         </div>
 
-            <AnimatePresence>
+        <AnimatePresence>
           {activeMegaMenu && megaMenuData[activeMegaMenu as keyof typeof megaMenuData] && (
             <motion.div
               key={activeMegaMenu}
-              initial={{ y: -10, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -10, opacity: 0 }}
-              transition={{ duration: 0.15 }}
+              initial={{ clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)', skewX: 0.5 }}
+              animate={{ clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', skewX: 0 }}
+              exit={{ clipPath: 'polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)', skewX: -0.5 }}
+              transition={{ duration: 0.35, ease: "easeInOut" }}
               className="absolute top-full left-0 right-0 bg-black border-b border-white/20 shadow-2xl z-40"
               onMouseEnter={handleMouseEnterMegaMenu}
               onMouseLeave={handleMouseLeaveMegaMenu}
@@ -370,7 +372,7 @@ export default function Navbar() {
                 </div>
                 <div
                   className={cn(
-                    "w-1/2 py-8 px-8 transition-all duration-500  ease-in-out relative overflow-hidden flex flex-col",
+                    "w-1/2 py-8 px-8 transition-all duration-500 ease-in-out relative overflow-hidden flex flex-col",
                     activeMegaMenu === "/uncrewedsystems"
                       ? "bg-[linear-gradient(rgba(0,0,0,0.3),_rgba(0,0,0,0.3)),url('/blueprint-background.png')] bg-cover bg-center text-white"
                       : "bg-white text-black",
@@ -382,7 +384,7 @@ export default function Navbar() {
                         <h2 className="text-4xl font-bold leading-tight tracking-wide font-orbit mb-4">
                           {hoveredUncrewedSystemDetails.headline}
                         </h2>
-                        <p 
+                        <p
                           className="text-lg leading-relaxed mb-6 font-orbit"
                           dangerouslySetInnerHTML={{ __html: hoveredUncrewedSystemDetails.subheadline }}
                         />
@@ -399,9 +401,9 @@ export default function Navbar() {
                         {hoveredUncrewedSystemDetails.droneImage && (
                           <motion.div
                             key={hoveredUncrewedSystemDetails.droneImage}
-                            initial={{ x: 200, opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            exit={{ x: 200, opacity: 0 }}
+                            initial={{ y: 20, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            exit={{ y: 20, opacity: 0 }}
                             transition={{ duration: 0.5, ease: "easeOut" }}
                             className="absolute bottom-0 right-[-2px] w-[500px] max-w-none h-auto object-contain opacity-80 invert brightness-200 z-10"
                           >
@@ -431,7 +433,6 @@ export default function Navbar() {
             </motion.div>
           )}
         </AnimatePresence>
-
       </nav>
 
       {mobileMenuOpen && (
