@@ -109,10 +109,9 @@ const megaMenuData = {
     description:
       "Advanced unmanned systems engineered for superiority in the field. Every component designed for reliability, performance, and tactical advantage.",
     links: [
-      { name: "Phantom X1", href: "/hardware#phantom", description: "Advanced reconnaissance drone" },
-      { name: "Sentinel Pro", href: "/hardware#sentinel", description: "Long-range surveillance system" },
-      { name: "Hardware Overview", href: "/hardware", description: "Complete systems catalog" },
-      { name: "Technical Specs", href: "/hardware#specs", description: "Detailed specifications" },
+      { name: "Comming Soon....", href: "/hardware#phantom", description: "Advanced reconnaissance drone" },
+     
+      
     ],
   },
   "/maverick": {
@@ -395,26 +394,26 @@ export default function Navbar() {
                           Explore
                         </Link>
                       </div>
-                      <AnimatePresence mode="wait">
-                        {hoveredUncrewedSystemDetails.droneImage && (
-                          <motion.div
-                            key={hoveredUncrewedSystemDetails.droneImage}
-                            initial={{ x: 200, opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            exit={{ x: 200, opacity: 0 }}
-                            transition={{ duration: 0.5, ease: "easeOut" }}
-                            className="absolute bottom-0 right-[-2px] w-[500px] max-w-none h-auto object-contain opacity-80 invert brightness-200 z-10"
-                          >
-                            <Image
-                              src={hoveredUncrewedSystemDetails.droneImage || "/placeholder.svg"}
-                              alt={`${hoveredUncrewedSystemDetails.headline} drone`}
-                              width={650}
-                              height={500}
-                              priority
-                            />
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
+                    <AnimatePresence mode="wait">
+  {hoveredUncrewedSystemDetails.droneImage && (
+    <motion.div
+      key={hoveredUncrewedSystemDetails.droneImage}
+      initial={{ x: 200, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: 200, opacity: 0 }}
+      transition={{ type: "tween", stiffness: 10, damping: 20 }}
+      className="absolute bottom-0 right-[-2px] w-[500px] max-w-none h-auto object-contain opacity-80 invert brightness-200 z-10"
+    >
+      <Image
+        src={hoveredUncrewedSystemDetails.droneImage || "/placeholder.svg"}
+        alt={`${hoveredUncrewedSystemDetails.headline} drone`}
+        width={650}
+        height={500}
+        priority
+      />
+    </motion.div>
+  )}
+</AnimatePresence>
                     </>
                   ) : (
                     <>
