@@ -310,91 +310,127 @@ export default function Navbar() {
           </div>
         </div>
 
-           <AnimatePresence>
-  {activeMegaMenu && megaMenuData[activeMegaMenu as keyof typeof megaMenuData] && (
-    <motion.div
-      key={activeMegaMenu}
-      initial={{ y: -10, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      exit={{ y: -10, opacity: 0 }}
-      transition={{ duration: 0.15 }}
-      className="absolute top-full left-0 right-0 bg-black border-b border-white/20 shadow-2xl z-40"
-      onMouseEnter={handleMouseEnterMegaMenu}
-      onMouseLeave={handleMouseLeaveMegaMenu}
-    >
-      <div className="flex w-full min-h-[450px]">
-        {/* ... (Left-hand side of the mega menu, no changes here) ... */}
-        <div className="w-1/2 max-w-7xl mx-auto pl-4 pr-0 py-8 md:pl-6 lg:pl-8 xl:pl-10">
-          {/* ... (Your existing code for the list of links) ... */}
-        </div>
-
-        {/* Right-hand side with the image and content */}
-        <div
-          className={cn(
-            "w-1/2 py-8 px-8 transition-all duration-500 ease-in-out relative overflow-hidden flex flex-col",
-            activeMegaMenu === "/uncrewedsystems"
-              ? "bg-[linear-gradient(rgba(0,0,0,0.3),_rgba(0,0,0,0.3)),url('/blueprint-background.png')] bg-cover bg-center text-white"
-              : "bg-white text-black",
-          )}
-        >
-          {activeMegaMenu === "/uncrewedsystems" && hoveredUncrewedSystemDetails ? (
-            <>
-              <div className="flex-1">
-                <h2 className="text-4xl font-bold leading-tight tracking-wide font-orbit mb-4">
-                  {hoveredUncrewedSystemDetails.headline}
-                </h2>
-                <p 
-                  className="text-lg leading-relaxed mb-6 font-orbit"
-                  dangerouslySetInnerHTML={{ __html: hoveredUncrewedSystemDetails.subheadline }}
-                />
-              </div>
-              <div className="mt-auto">
-                <Link
-                  href={hoveredUncrewedSystemDetails.href || "#"}
-                  className="inline-block px-4 py-2 border border-white text-white hover:bg-white hover:text-black transition-colors text-base font-orbit"
+            <AnimatePresence>
+          {activeMegaMenu && megaMenuData[activeMegaMenu as keyof typeof megaMenuData] && (
+            <motion.div
+              key={activeMegaMenu}
+              initial={{ y: -10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -10, opacity: 0 }}
+              transition={{ duration: 0.15 }}
+              className="absolute top-full left-0 right-0 bg-black border-b border-white/20 shadow-2xl z-40"
+              onMouseEnter={handleMouseEnterMegaMenu}
+              onMouseLeave={handleMouseLeaveMegaMenu}
+            >
+              <div className="flex w-full min-h-[450px]">
+                <div className="w-1/2 max-w-7xl mx-auto pl-4 pr-0 py-8 md:pl-6 lg:pl-8 xl:pl-10">
+                  <div className="space-y-1">
+                    <h3 className="text-sm font-semibold text-gray-400 mb-6 tracking-wider font-orbit">
+                      {megaMenuData[activeMegaMenu as keyof typeof megaMenuData].title}
+                    </h3>
+                    <div
+                      className={cn(
+                        "space-y-1",
+                        activeMegaMenu === "/uncrewedsystems" && "max-h-[328px] overflow-y-auto pr-2 custom-scrollbar",
+                      )}
+                    >
+                      {megaMenuData[activeMegaMenu as keyof typeof megaMenuData].links.map((link, index) => (
+                        <Link
+                          key={index}
+                          href={link.href}
+                          onMouseEnter={() => {
+                            setHoveredNavLinkIndex(index)
+                            if (activeMegaMenu === "/uncrewedsystems" && link.details) {
+                              setHoveredUncrewedSystemDetails({ ...link.details, href: link.href })
+                            }
+                          }}
+                          onMouseLeave={() => {
+                            setHoveredNavLinkIndex(null)
+                          }}
+                          className={cn(
+                            "group block p-3 rounded-lg hover:bg-white/5 transition-all duration-300 ease-out",
+                            hoveredNavLinkIndex !== null && hoveredNavLinkIndex !== index && "blur-sm scale-[0.98]",
+                          )}
+                        >
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <div className="text-white font-medium text-lg group-hover:text-blue-400 transition-colors font-orbit">
+                                {link.name}
+                              </div>
+                              <div className="text-gray-400 text-sm mt-1 font-orbit">{link.description}</div>
+                            </div>
+                            <ArrowRight
+                              className="w-4 h-4 text-gray-600 group-hover:text-blue-400 group-hover:translate-x-1 transition-all"
+                            />
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className={cn(
+                    "w-1/2 py-8 px-8 transition-all duration-500  ease-in-out relative overflow-hidden flex flex-col",
+                    activeMegaMenu === "/uncrewedsystems"
+                      ? "bg-[linear-gradient(rgba(0,0,0,0.3),_rgba(0,0,0,0.3)),url('/blueprint-background.png')] bg-cover bg-center text-white"
+                      : "bg-white text-black",
+                  )}
                 >
-                  Explore
-                </Link>
+                  {activeMegaMenu === "/uncrewedsystems" && hoveredUncrewedSystemDetails ? (
+                    <>
+                      <div className="flex-1">
+                        <h2 className="text-4xl font-bold leading-tight tracking-wide font-orbit mb-4">
+                          {hoveredUncrewedSystemDetails.headline}
+                        </h2>
+                        <p 
+                          className="text-lg leading-relaxed mb-6 font-orbit"
+                          dangerouslySetInnerHTML={{ __html: hoveredUncrewedSystemDetails.subheadline }}
+                        />
+                      </div>
+                      <div className="mt-auto">
+                        <Link
+                          href={hoveredUncrewedSystemDetails.href || "#"}
+                          className="inline-block px-4 py-2 border border-white text-white hover:bg-white hover:text-black transition-colors text-base font-orbit"
+                        >
+                          Explore
+                        </Link>
+                      </div>
+                      <AnimatePresence mode="wait">
+                        {hoveredUncrewedSystemDetails.droneImage && (
+                          <motion.div
+                            key={hoveredUncrewedSystemDetails.droneImage}
+                            initial={{ x: 200, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            exit={{ x: 200, opacity: 0 }}
+                            transition={{ duration: 0.5, ease: "easeOut" }}
+                            className="absolute bottom-0 right-[-2px] w-[500px] max-w-none h-auto object-contain opacity-80 invert brightness-200 z-10"
+                          >
+                            <Image
+                              src={hoveredUncrewedSystemDetails.droneImage || "/placeholder.svg"}
+                              alt={`${hoveredUncrewedSystemDetails.headline} drone`}
+                              width={650}
+                              height={500}
+                              priority
+                            />
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </>
+                  ) : (
+                    <>
+                      <h2 className="text-3xl font-bold leading-tight font-orbit mb-4">
+                        {megaMenuData[activeMegaMenu as keyof typeof megaMenuData]?.title}
+                      </h2>
+                      <p className="text-lg leading-relaxed font-orbit">
+                        {megaMenuData[activeMegaMenu as keyof typeof megaMenuData]?.description}
+                      </p>
+                    </>
+                  )}
+                </div>
               </div>
-
-              {/* ➡️ This is the updated section for the image animation */}
-              <AnimatePresence mode="wait">
-                {hoveredUncrewedSystemDetails.droneImage && (
-                  <motion.div
-                    key={hoveredUncrewedSystemDetails.droneImage}
-                    initial={{ x: 200, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    exit={{ x: -200, opacity: 0 }} // Added exit animation
-                    transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="absolute bottom-0 right-[-2px] w-[500px] max-w-none h-auto object-contain opacity-80 invert brightness-200 z-10"
-                  >
-                    <Image
-                      src={hoveredUncrewedSystemDetails.droneImage || "/placeholder.svg"}
-                      alt={`${hoveredUncrewedSystemDetails.headline} drone`}
-                      width={650}
-                      height={500}
-                      priority
-                    />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-              {/* ⬅️ End of updated section */}
-            </>
-          ) : (
-            <>
-              <h2 className="text-3xl font-bold leading-tight font-orbit mb-4">
-                {megaMenuData[activeMegaMenu as keyof typeof megaMenuData]?.title}
-              </h2>
-              <p className="text-lg leading-relaxed font-orbit">
-                {megaMenuData[activeMegaMenu as keyof typeof megaMenuData]?.description}
-              </p>
-            </>
+            </motion.div>
           )}
-        </div>
-      </div>
-    </motion.div>
-  )}
-</AnimatePresence>
+        </AnimatePresence>
 
       </nav>
 
