@@ -316,10 +316,10 @@ export default function Navbar() {
           {activeMegaMenu && megaMenuData[activeMegaMenu as keyof typeof megaMenuData] && (
             <motion.div
               key={activeMegaMenu}
-              initial={{ y: -10, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -10, opacity: 0 }}
-              transition={{ duration: 0.15 }}
+              initial={{ clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)' }}
+              animate={{ clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' }}
+              exit={{ clipPath: 'polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)' }}
+              transition={{ duration: 0.35, ease: "easeInOut" }}
               className="absolute top-full left-0 right-0 bg-black border-b border-white/20 shadow-2xl z-40"
               onMouseEnter={handleMouseEnterMegaMenu}
               onMouseLeave={handleMouseLeaveMegaMenu}
@@ -401,10 +401,10 @@ export default function Navbar() {
                         {hoveredUncrewedSystemDetails.droneImage && (
                           <motion.div
                             key={hoveredUncrewedSystemDetails.droneImage}
-                            initial={{ x: 50, opacity: 0.2, skewY: -2 }}
-                            animate={{ x: 0, opacity: 1, skewY: 0 }}
-                            exit={{ x: 50, opacity: 0, skewY: 2 }}
-                            transition={{ duration: 0.6, ease: "easeOut" }}
+                            initial={{ y: 20, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            exit={{ y: 20, opacity: 0 }}
+                            transition={{ duration: 0.5, ease: "easeOut" }}
                             className="absolute bottom-0 right-[-2px] w-[500px] max-w-none h-auto object-contain opacity-80 invert brightness-200 z-10"
                           >
                             <Image
