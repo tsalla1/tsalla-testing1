@@ -322,8 +322,9 @@ export default function Navbar() {
               onMouseEnter={handleMouseEnterMegaMenu}
               onMouseLeave={handleMouseLeaveMegaMenu}
             >
-              <div className="flex w-full min-h-[450px]">
-                <div className="w-1/2 max-w-7xl mx-auto pl-4 pr-0 py-8 md:pl-6 lg:pl-8 xl:pl-10">
+              <div className="max-w-7xl mx-auto">
+                <div className="flex w-full min-h-[450px]">
+                  <div className="w-1/2 pl-4 pr-0 py-8 md:pl-6 lg:pl-8 xl:pl-10">
                   <div className="space-y-1">
                     <h3 className="text-sm font-semibold text-gray-400 mb-6 tracking-wider font-orbit">
                       {megaMenuData[activeMegaMenu as keyof typeof megaMenuData].title}
@@ -428,6 +429,7 @@ export default function Navbar() {
                   )}
                 </div>
               </div>
+            </div>
             </motion.div>
           )}
         </AnimatePresence>
