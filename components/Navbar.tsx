@@ -225,8 +225,6 @@ export default function Navbar() {
     setActiveMegaMenu(href)
     if (href !== "/uncrewedsystems") {
       setHoveredUncrewedSystemDetails(null)
-    } else {
-      setHoveredUncrewedSystemDetails(megaMenuData["/uncrewedsystems"].links[0].details);
     }
   }
 
@@ -250,27 +248,6 @@ export default function Navbar() {
       setHoveredUncrewedSystemDetails(null)
     }, 150)
   }
-
-  // ➡️ Define the variants for the staggered animation
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1, // Stagger children by 0.1 seconds
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 10 },
-    show: { opacity: 1, y: 0 },
-  };
-
-  const imageVariants = {
-    hidden: { opacity: 0, y: 10 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.8 } }, // Slower fade-in for the image
-  };
 
   return (
     <>
@@ -333,7 +310,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        <AnimatePresence>
+            <AnimatePresence>
           {activeMegaMenu && megaMenuData[activeMegaMenu as keyof typeof megaMenuData] && (
             <motion.div
               key={activeMegaMenu}
@@ -393,46 +370,39 @@ export default function Navbar() {
                 </div>
                 <div
                   className={cn(
-                    "w-1/2 py-8 px-8 transition-all duration-500 ease-in-out relative overflow-hidden flex flex-col",
+                    "w-1/2 py-8 px-8 transition-all duration-500  ease-in-out relative overflow-hidden flex flex-col",
                     activeMegaMenu === "/uncrewedsystems"
                       ? "bg-[linear-gradient(rgba(0,0,0,0.3),_rgba(0,0,0,0.3)),url('/blueprint-background.png')] bg-cover bg-center text-white"
                       : "bg-white text-black",
                   )}
                 >
-                  <AnimatePresence mode="wait">
-                    {activeMegaMenu === "/uncrewedsystems" && hoveredUncrewedSystemDetails ? (
-                      // ➡️ The container for all animated elements
-                      <motion.div
-                        key={hoveredUncrewedSystemDetails.headline}
-                        className="flex flex-col flex-1"
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate="show"
-                        exit="hidden"
-                      >
-                        <motion.h2
-                          className="text-4xl font-bold leading-tight tracking-wide font-orbit mb-4"
-                          variants={itemVariants}
-                        >
+                  {activeMegaMenu === "/uncrewedsystems" && hoveredUncrewedSystemDetails ? (
+                    <>
+                      <div className="flex-1">
+                        <h2 className="text-4xl font-bold leading-tight tracking-wide font-orbit mb-4">
                           {hoveredUncrewedSystemDetails.headline}
-                        </motion.h2>
-                        <motion.p
+                        </h2>
+                        <p 
                           className="text-lg leading-relaxed mb-6 font-orbit"
-                          variants={itemVariants}
                           dangerouslySetInnerHTML={{ __html: hoveredUncrewedSystemDetails.subheadline }}
                         />
-                        <motion.div className="mt-auto" variants={itemVariants}>
-                          <Link
-                            href={hoveredUncrewedSystemDetails.href || "#"}
-                            className="inline-block px-4 py-2 border border-white text-white hover:bg-white hover:text-black transition-colors text-base font-orbit"
-                          >
-                            Explore
-                          </Link>
-                        </motion.div>
+                      </div>
+                      <div className="mt-auto">
+                        <Link
+                          href={hoveredUncrewedSystemDetails.href || "#"}
+                          className="inline-block px-4 py-2 border border-white text-white hover:bg-white hover:text-black transition-colors text-base font-orbit"
+                        >
+                          Explore
+                        </Link>
+                      </div>
+                      <AnimatePresence mode="wait">
                         {hoveredUncrewedSystemDetails.droneImage && (
                           <motion.div
                             key={hoveredUncrewedSystemDetails.droneImage}
-                            variants={imageVariants}
+                            initial={{ x: 200, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            exit={{ x: 200, opacity: 0 }}
+                            transition={{ duration: 0.5, ease: "easeOut" }}
                             className="absolute bottom-0 right-[-2px] w-[500px] max-w-none h-auto object-contain opacity-80 invert brightness-200 z-10"
                           >
                             <Image
@@ -444,35 +414,24 @@ export default function Navbar() {
                             />
                           </motion.div>
                         )}
-                      </motion.div>
-                    ) : (
-                      <motion.div
-                        key="default-content"
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate="show"
-                        exit="hidden"
-                      >
-                        <motion.h2
-                          className="text-3xl font-bold leading-tight font-orbit mb-4"
-                          variants={itemVariants}
-                        >
-                          {megaMenuData[activeMegaMenu as keyof typeof megaMenuData]?.title}
-                        </motion.h2>
-                        <motion.p
-                          className="text-lg leading-relaxed font-orbit"
-                          variants={itemVariants}
-                        >
-                          {megaMenuData[activeMegaMenu as keyof typeof megaMenuData]?.description}
-                        </motion.p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                      </AnimatePresence>
+                    </>
+                  ) : (
+                    <>
+                      <h2 className="text-3xl font-bold leading-tight font-orbit mb-4">
+                        {megaMenuData[activeMegaMenu as keyof typeof megaMenuData]?.title}
+                      </h2>
+                      <p className="text-lg leading-relaxed font-orbit">
+                        {megaMenuData[activeMegaMenu as keyof typeof megaMenuData]?.description}
+                      </p>
+                    </>
+                  )}
                 </div>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
+
       </nav>
 
       {mobileMenuOpen && (
