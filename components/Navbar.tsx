@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation"
 import Image from "next/image"
 import { Menu, X, Plus, ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { motion, AnimatePresence } from "framer-motion"
 
 const megaMenuData = {
   "/uncrewedsystems": {
@@ -14,13 +15,14 @@ const megaMenuData = {
       "Revolutionary uncrewed systems that think, adapt, and execute missions with unprecedented autonomy. Real-time decision making where delay means defeat.",
     links: [
       {
-        name: "DEXTER",
+        name: "DEXTER ",
         href: "/uncrewedsystems/dexter",
         description: "Multi-Role Single Solution",
         details: {
           headline: "DEXTER",
-          subheadline: "Multirole Single Solution",
-          droneImage: "https://cdn.sanity.io/images/9w6n0tb6/production/93db248798d139da784f45563173775fd74dfdc2-1707x1205.png",
+          subheadline: "Multirole <br /> Single Solution",
+          droneImage:
+            "https://cdn.sanity.io/images/9w6n0tb6/production/d1d0466a1d875feae95036da6f497302a537d9ca-1707x1207.png",
         },
       },
       {
@@ -29,9 +31,9 @@ const megaMenuData = {
         description: "Fast Entry Navigational Intrusion eXplorer",
         details: {
           headline: "FENIX",
-          subheadline: "Fast Entry Navigational <br />Intrusion eXplorer",
+          subheadline: "Fast Entry Navigational <br /> Intrusion eXplorer",
           droneImage:
-            "https://cdn.sanity.io/images/9w6n0tb6/production/a44367c95c239a24c5bbf8651eac1e83dbd99bc7-1280x905.svg",
+            "https://cdn.sanity.io/images/9w6n0tb6/production/4c840367c7d0ff1e0d69011e86932a7730a8c4f3-1707x1207.png",
         },
       },
       {
@@ -40,7 +42,7 @@ const megaMenuData = {
         description: "Battlefield Aerial Tactical UAS",
         details: {
           headline: "BAT",
-          subheadline: "Battlefield Aerial Tactical UAS",
+          subheadline: "Battlefield Aerial <br /> Tactical UAS",
           droneImage:
             "https://cdn.sanity.io/images/9w6n0tb6/production/59638385bd840eeec0d9986948452b0046ef63a7-1707x1207.png",
         },
@@ -51,9 +53,53 @@ const megaMenuData = {
         description: "Smart Transport Operations for Rugged Missions",
         details: {
           headline: "STORM",
-          subheadline: "Smart Transport Operations for Rugged Missions",
+          subheadline: "Smart Transport Operations <br /> for Rugged Missions",
           droneImage:
-            "https://cdn.sanity.io/images/9w6n0tb6/production/d898d9ab6caea78a033f6ea0ed2b82e321367cfe-1707x1207.png",
+            "https://cdn.sanity.io/images/9w6n0tb6/production/42b4a626568836e203e5376d9b9765bcf0333a85-1707x1207.png",
+        },
+      },
+      {
+        name: "RAVEN",
+        href: "/uncrewedsystems/raven",
+        description: "Reconnaissance and Aerial Vehicle for Extreme Navigation",
+        details: {
+          headline: "RAVEN",
+          subheadline: "Reconnaissance and Aerial Vehicle <br /> for Extreme Navigation",
+          droneImage:
+            "https://cdn.sanity.io/images/9w6n0tb6/production/d45089e909a32c2f6d0a7a00f2e82f7e7a93a207-1707x1207.png",
+        },
+      },
+      {
+        name: "GRIFFIN",
+        href: "/uncrewedsystems/griffin",
+        description: "Ground Reconnaissance and Interdiction Force",
+        details: {
+          headline: "GRIFFIN",
+          subheadline: "Ground Reconnaissance and <br /> Interdiction Force",
+          droneImage:
+            "https://cdn.sanity.io/images/9w6n0tb6/production/07d4b0f9f8e4e9a0c1a7e4e0b0e5c9f5e4c0d0c8-1707x1207.png",
+        },
+      },
+      {
+        name: "VULCAN",
+        href: "/uncrewedsystems/vulcan",
+        description: "Versatile Unmanned Logistics and Combat Aircraft",
+        details: {
+          headline: "VULCAN",
+          subheadline: "Versatile Unmanned Logistics <br /> and Combat Aircraft",
+          droneImage:
+            "https://cdn.sanity.io/images/9w6n0tb6/production/a0f3d9f0f9b6e8d1a1f0a1f0a1f0a1f0a1f0a1f0-1707x1207.png",
+        },
+      },
+      {
+        name: "ORION",
+        href: "/uncrewedsystems/orion",
+        description: "Orbital Reconnaissance and Interdiction Operations Network",
+        details: {
+          headline: "ORION",
+          subheadline: "Orbital Reconnaissance and <br /> Interdiction Operations Network <br />",
+          droneImage:
+            "https://cdn.sanity.io/images/9w6n0tb6/production/b2f6e6b4f7a7c1b5b4e7e6d1c2d0c1d2e1f2f3f4-1707x1207.png",
         },
       },
     ],
@@ -141,7 +187,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null)
   const [hoveredNavLinkIndex, setHoveredNavLinkIndex] = useState<number | null>(null)
-  const [hoveredUncrewedSystemDetails, setHoveredUncrewedSystemDetails] = useState<any>(null) // State for specific uncrewed system details
+  const [hoveredUncrewedSystemDetails, setHoveredUncrewedSystemDetails] = useState<any>(null)
   const megaMenuTimeoutRef = useRef<NodeJS.Timeout | null>(null)
   const lastScrollY = useRef(0)
   const pathname = usePathname()
@@ -153,7 +199,7 @@ export default function Navbar() {
       if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
         setIsVisible(false)
         setActiveMegaMenu(null)
-        setHoveredUncrewedSystemDetails(null) // Clear details on scroll hide
+        setHoveredUncrewedSystemDetails(null)
       } else {
         setIsVisible(true)
       }
@@ -168,7 +214,7 @@ export default function Navbar() {
   useEffect(() => {
     setMobileMenuOpen(false)
     setActiveMegaMenu(null)
-    setHoveredUncrewedSystemDetails(null) // Clear details on route change
+    setHoveredUncrewedSystemDetails(null)
   }, [pathname])
 
   const handleMouseEnterNav = (href: string) => {
@@ -178,14 +224,14 @@ export default function Navbar() {
     }
     setActiveMegaMenu(href)
     if (href !== "/uncrewedsystems") {
-      setHoveredUncrewedSystemDetails(null) // Clear details if not uncrewed systems
+      setHoveredUncrewedSystemDetails(null)
     }
   }
 
   const handleMouseLeaveNav = () => {
     megaMenuTimeoutRef.current = setTimeout(() => {
       setActiveMegaMenu(null)
-      setHoveredUncrewedSystemDetails(null) // Clear details when leaving main nav item
+      setHoveredUncrewedSystemDetails(null)
     }, 150)
   }
 
@@ -199,7 +245,7 @@ export default function Navbar() {
   const handleMouseLeaveMegaMenu = () => {
     megaMenuTimeoutRef.current = setTimeout(() => {
       setActiveMegaMenu(null)
-      setHoveredUncrewedSystemDetails(null) // Clear details when leaving mega menu
+      setHoveredUncrewedSystemDetails(null)
     }, 150)
   }
 
@@ -264,106 +310,128 @@ export default function Navbar() {
           </div>
         </div>
 
-        {activeMegaMenu && megaMenuData[activeMegaMenu as keyof typeof megaMenuData] && (
-          <div
-            className="absolute top-full left-0 right-0 bg-black border-b border-white/20 shadow-2xl z-40 animate-slideDown"
-            onMouseEnter={handleMouseEnterMegaMenu}
-            onMouseLeave={handleMouseLeaveMegaMenu}
-          >
-            <div className="flex w-full">
-              <div className="w-1/2 max-w-7xl mx-auto pl-4 pr-0 py-8 md:pl-6 lg:pl-8 xl:pl-10">
-                <div className="space-y-1">
-                  <h3 className="text-sm font-semibold text-gray-400 mb-6 tracking-wider font-orbit">
-                    {megaMenuData[activeMegaMenu as keyof typeof megaMenuData].title}
-                  </h3>
-                  {megaMenuData[activeMegaMenu as keyof typeof megaMenuData].links.map((link, index) => (
-                    <Link
-                      key={index}
-                      href={link.href}
-                      onMouseEnter={() => {
-                        setHoveredNavLinkIndex(index)
-                        if (activeMegaMenu === "/uncrewedsystems" && link.details) {
-                          setHoveredUncrewedSystemDetails({ ...link.details, href: link.href })
-                        }
-                      }}
-                      onMouseLeave={() => {
-                        setHoveredNavLinkIndex(null)
-                      }}
+            <AnimatePresence>
+          {activeMegaMenu && megaMenuData[activeMegaMenu as keyof typeof megaMenuData] && (
+            <motion.div
+              key={activeMegaMenu}
+              initial={{ y: -10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -10, opacity: 0 }}
+              transition={{ duration: 0.15 }}
+              className="absolute top-full left-0 right-0 bg-black border-b border-white/20 shadow-2xl z-40"
+              onMouseEnter={handleMouseEnterMegaMenu}
+              onMouseLeave={handleMouseLeaveMegaMenu}
+            >
+              <div className="flex w-full min-h-[450px]">
+                <div className="w-1/2 max-w-7xl mx-auto pl-4 pr-0 py-8 md:pl-6 lg:pl-8 xl:pl-10">
+                  <div className="space-y-1">
+                    <h3 className="text-sm font-semibold text-gray-400 mb-6 tracking-wider font-orbit">
+                      {megaMenuData[activeMegaMenu as keyof typeof megaMenuData].title}
+                    </h3>
+                    <div
                       className={cn(
-                        "group block p-3 rounded-lg hover:bg-white/5 transition-all duration-300 ease-out",
-                        hoveredNavLinkIndex !== null && hoveredNavLinkIndex !== index && "blur-sm scale-[0.98]",
+                        "space-y-1",
+                        activeMegaMenu === "/uncrewedsystems" && "max-h-[328px] overflow-y-auto pr-2 custom-scrollbar",
                       )}
                     >
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <div className="text-white font-medium text-lg group-hover:text-blue-400 transition-colors font-orbit">
-                            {link.name}
+                      {megaMenuData[activeMegaMenu as keyof typeof megaMenuData].links.map((link, index) => (
+                        <Link
+                          key={index}
+                          href={link.href}
+                          onMouseEnter={() => {
+                            setHoveredNavLinkIndex(index)
+                            if (activeMegaMenu === "/uncrewedsystems" && link.details) {
+                              setHoveredUncrewedSystemDetails({ ...link.details, href: link.href })
+                            }
+                          }}
+                          onMouseLeave={() => {
+                            setHoveredNavLinkIndex(null)
+                          }}
+                          className={cn(
+                            "group block p-3 rounded-lg hover:bg-white/5 transition-all duration-300 ease-out",
+                            hoveredNavLinkIndex !== null && hoveredNavLinkIndex !== index && "blur-sm scale-[0.98]",
+                          )}
+                        >
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <div className="text-white font-medium text-lg group-hover:text-blue-400 transition-colors font-orbit">
+                                {link.name}
+                              </div>
+                              <div className="text-gray-400 text-sm mt-1 font-orbit">{link.description}</div>
+                            </div>
+                            <ArrowRight
+                              className="w-4 h-4 text-gray-600 group-hover:text-blue-400 group-hover:translate-x-1 transition-all"
+                            />
                           </div>
-                          <div className="text-gray-400 text-sm mt-1 font-orbit">{link.description}</div>
-                        </div>
-                        <ArrowRight
-
-                          className="w-4 h-4 text-gray-600 group-hover:text-blue-400 group-hover:translate-x-1 transition-all"
-                        />
-                      </div>
-                    </Link>
-                  ))}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </div>
-             <div
-                className={cn(
-                  "w-1/2 py-8 transition-all duration-500 ease-in-out relative overflow-hidden",
-    activeMegaMenu === "/uncrewedsystems"
-      // Changed the overlay from 50% (0.5) to 30% (0.3) opacity
-      ? "bg-[linear-gradient(rgba(0,0,0,0.3),_rgba(0,0,0,0.3)),url('/blueprint-background.png')] bg-cover bg-center text-white"
-      : "bg-white text-black",
-                )}
-              >
-                {activeMegaMenu === "/uncrewedsystems" && <div className="absolute inset-0 bg-black opacity-30" />}
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 flex flex-col items-start h-full relative z-10">
+                <div
+                  className={cn(
+                    "w-1/2 py-8 px-8 transition-all duration-500  ease-in-out relative overflow-hidden flex flex-col",
+                    activeMegaMenu === "/uncrewedsystems"
+                      ? "bg-[linear-gradient(rgba(0,0,0,0.3),_rgba(0,0,0,0.3)),url('/blueprint-background.png')] bg-cover bg-center text-white"
+                      : "bg-white text-black",
+                  )}
+                >
                   {activeMegaMenu === "/uncrewedsystems" && hoveredUncrewedSystemDetails ? (
                     <>
-                      <h2 className="text-5xl font-bold leading-tight tracking-wide font-orbit">
-                        {hoveredUncrewedSystemDetails.headline}
-                      </h2>
-                     <p
-  className="text-lg leading-relaxed mt-2 mb-6 font-orbit"
-  dangerouslySetInnerHTML={{ __html: hoveredUncrewedSystemDetails.subheadline }}
-/>
-
-                      <Link
-                        href={hoveredUncrewedSystemDetails.href || "#"}
-                        className="inline-block px-4 py-2 border border-white text-white hover:bg-white hover:text-black transition-colors text-base mt-52 font-orbit"
-                      >
-                        Explore
-                      </Link>
-                      {hoveredUncrewedSystemDetails.droneImage && (
-  <Image
-    src={hoveredUncrewedSystemDetails.droneImage || "/placeholder.svg"}
-    alt={`${hoveredUncrewedSystemDetails.headline} drone`}
-    width={500}
-    height={300}
-    className="absolute bottom-0 right-0 w-[31.25rem] h-auto object-contain opacity-80 invert brightness-200"
-    priority
-  />
-)}
+                      <div className="flex-1">
+                        <h2 className="text-4xl font-bold leading-tight tracking-wide font-orbit mb-4">
+                          {hoveredUncrewedSystemDetails.headline}
+                        </h2>
+                        <p 
+                          className="text-lg leading-relaxed mb-6 font-orbit"
+                          dangerouslySetInnerHTML={{ __html: hoveredUncrewedSystemDetails.subheadline }}
+                        />
+                      </div>
+                      <div className="mt-auto">
+                        <Link
+                          href={hoveredUncrewedSystemDetails.href || "#"}
+                          className="inline-block px-4 py-2 border border-white text-white hover:bg-white hover:text-black transition-colors text-base font-orbit"
+                        >
+                          Explore
+                        </Link>
+                      </div>
+                      <AnimatePresence mode="wait">
+                        {hoveredUncrewedSystemDetails.droneImage && (
+                          <motion.div
+                            key={hoveredUncrewedSystemDetails.droneImage}
+                            initial={{ x: 200, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            exit={{ x: 200, opacity: 0 }}
+                            transition={{ duration: 0.5, ease: "easeOut" }}
+                            className="absolute bottom-0 right-[-2px] w-[500px] max-w-none h-auto object-contain opacity-80 invert brightness-200 z-10"
+                          >
+                            <Image
+                              src={hoveredUncrewedSystemDetails.droneImage || "/placeholder.svg"}
+                              alt={`${hoveredUncrewedSystemDetails.headline} drone`}
+                              width={650}
+                              height={500}
+                              priority
+                            />
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </>
                   ) : (
                     <>
-                      <h2 className="text-3xl font-bold leading-tight font-orbit">
+                      <h2 className="text-3xl font-bold leading-tight font-orbit mb-4">
                         {megaMenuData[activeMegaMenu as keyof typeof megaMenuData]?.title}
                       </h2>
                       <p className="text-lg leading-relaxed font-orbit">
                         {megaMenuData[activeMegaMenu as keyof typeof megaMenuData]?.description}
                       </p>
-                      <div className="pt-4"></div>
                     </>
                   )}
                 </div>
               </div>
-            </div>
-          </div>
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>
+
       </nav>
 
       {mobileMenuOpen && (
