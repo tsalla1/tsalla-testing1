@@ -317,7 +317,7 @@ export default function Navbar() {
               initial={{ y: -10, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -10, opacity: 0 }}
-              transition={{ duration: 0.15 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
               className="absolute top-full left-0 right-0 bg-black border-b border-white/20 shadow-2xl z-40"
               onMouseEnter={handleMouseEnterMegaMenu}
               onMouseLeave={handleMouseLeaveMegaMenu}
@@ -368,9 +368,9 @@ export default function Navbar() {
                     </div>
                   </div>
                 </div>
-                 <div
+                <div
                   className={cn(
-                    "w-full xl:w-1/2 py-8 px-8 transition-all duration-500  ease-in-out relative overflow-hidden flex flex-col",
+                    "w-1/2 py-8 px-8 transition-all duration-500  ease-in-out relative overflow-hidden flex flex-col",
                     activeMegaMenu === "/uncrewedsystems"
                       ? "bg-[linear-gradient(rgba(0,0,0,0.3),_rgba(0,0,0,0.3)),url('/blueprint-background.png')] bg-cover bg-center text-white"
                       : "bg-white text-black",
@@ -395,26 +395,26 @@ export default function Navbar() {
                           Explore
                         </Link>
                       </div>
-                    <AnimatePresence mode="wait">
-  {hoveredUncrewedSystemDetails.droneImage && (
-    <motion.div
-      key={hoveredUncrewedSystemDetails.droneImage}
-      initial={{ x: 200, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      exit={{ x: 200, opacity: 0 }}
-      transition={{ type: "tween", stiffness: 10, damping: 20 }}
-      className="absolute bottom-0 right-[-2px] w-full max-w-[500px] h-auto object-contain opacity-80 invert brightness-200 z-10"
-    >
-      <Image
-        src={hoveredUncrewedSystemDetails.droneImage || "/placeholder.svg"}
-        alt={`${hoveredUncrewedSystemDetails.headline} drone`}
-        width={650}
-        height={500}
-        priority
-      />
-    </motion.div>
-  )}
-</AnimatePresence>
+                      <AnimatePresence mode="wait">
+                        {hoveredUncrewedSystemDetails.droneImage && (
+                          <motion.div
+                            key={hoveredUncrewedSystemDetails.droneImage}
+                            initial={{ x: 200, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            exit={{ x: 200, opacity: 0 }}
+                            transition={{ duration: 0.5, ease: "easeOut" }}
+                            className="absolute bottom-0 right-[-2px] w-[500px] max-w-none h-auto object-contain opacity-80 invert brightness-200 z-10"
+                          >
+                            <Image
+                              src={hoveredUncrewedSystemDetails.droneImage || "/placeholder.svg"}
+                              alt={`${hoveredUncrewedSystemDetails.headline} drone`}
+                              width={650}
+                              height={500}
+                              priority
+                            />
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </>
                   ) : (
                     <>
