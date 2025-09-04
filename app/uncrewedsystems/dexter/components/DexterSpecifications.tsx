@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
-import { Plus, Minus } from "lucide-react"
+import { Plus, ChevronDown } from "lucide-react"
 import { ContentWrapper } from "@/components/ContentWrapper"
 
 // --- Accordion Item Component ---
@@ -68,12 +68,19 @@ const categories = {
   ISR: {
     title: "ISR (Intelligence, Surveillance, Reconnaissance)",
     headline: "Advanced ISR Capabilities",
+    subcategories: [
+      { name: "EO Zoom Camera" },
+      { name: "Thermal Camera" },
+      { name: "Stabilized Gimbal" },
+      { name: "Compact & Lightweight" },
+    ],
     description: [
       {
         title: "EO Zoom Camera",
         whatItMeans:
           "A powerful daylight camera with smooth 40x zoom – combines 20x true optical zoom and 2x digital boost.",
-        keyBenefit: "Wide-area coverage and stand-off detail with zero risk to the aircraft.",
+        keyBenefit:
+          "Wide-area coverage and stand-off detail with zero risk to the aircraft.",
       },
       {
         title: "Thermal Camera — 640x480",
@@ -83,28 +90,35 @@ const categories = {
           "Reliable day/night situational awareness and thermal inspection in any environment.",
       },
       {
-        title: "Stabilized Gimbal — Pitch/Yaw/Roll",
-        whatItMeans:
-          "Fully stabilized 3-axis gimbal with -45° to +135° pitch and continuous 360° yaw/roll rotation.",
-        keyBenefit: "Accurate, smooth data capture from any angle with no blind spots.",
+        title: "Stabilized Gimbal",
+        whatItMeans: "Keeps imagery stable even in turbulent conditions.",
+        keyBenefit: "Smooth and reliable footage for critical ISR operations.",
       },
       {
         title: "Compact & Lightweight",
-        whatItMeans: "Compact build (40x40x65 mm) and weighs only 125 grams.",
-        keyBenefit: "Maximizes mission-flexibility without trade-offs in flight time.",
+        whatItMeans: "Designed for small UAVs without compromising capability.",
+        keyBenefit: "Extends endurance and maximizes payload efficiency.",
       },
     ],
     image:
-      "https://cdn.sanity.io/images/9w6n0tb6/production/1a0050c94832c75b0ce162c14d56ea20b0c736c6-310x297.png",
+      "https://cdn.sanity.io/images/9w6n0tb6/production/f0f1a5dabcfec99d58024cd069b67a4644ae7d0f-1683x1560.png",
   },
+
   Mapping: {
     title: "High-Resolution Mapping",
     headline: "Precision Mapping & Surveying",
+    subcategories: [
+      { name: "61MP Sensor" },
+      { name: "Remote Operation" },
+      { name: "Compact Body" },
+      { name: "Lens Options" },
+    ],
     description: [
       {
         title: "61MP Full-Frame Sensor",
         whatItMeans: "Ultra-high resolution – captures extremely detailed still images.",
-        keyBenefit: "You can fly higher or cover more area without losing image quality.",
+        keyBenefit:
+          "You can fly higher or cover more area without losing image quality.",
       },
       {
         title: "Remote Operation (USB-C / LAN)",
@@ -113,23 +127,28 @@ const categories = {
         keyBenefit: "Full automation or remote piloting – efficient workflows.",
       },
       {
-        title: "Compact & Lightweight Body",
-        whatItMeans: "Small size and light weight make it easy to integrate.",
-        keyBenefit: "More flight time, more mounting options, less power draw.",
+        title: "Compact Body",
+        whatItMeans: "Lightweight housing optimized for drone integration.",
+        keyBenefit: "Minimizes drag and weight impact on flight performance.",
       },
       {
-        title: "E-Mount Lens Compatibility",
-        whatItMeans:
-          "Works with Sony’s wide range of interchangeable lenses (zoom, prime, wide-angle, telephoto).",
-        keyBenefit: "One camera body, multiple use cases – just switch the lens.",
+        title: "Lens Options",
+        whatItMeans: "Interchangeable lenses for flexible mission profiles.",
+        keyBenefit: "Adaptable to a variety of mapping and survey needs.",
       },
     ],
     image:
       "https://cdn.sanity.io/images/9w6n0tb6/production/3efb323c85cf4b1583dc48c6cb043329901ebf22-688x546.png",
   },
+
   Multispectral: {
     title: "Multispectral & Agricultural Analytics",
     headline: "Crop Health & Environmental Monitoring",
+    subcategories: [
+      { name: "Multi-Sensor Gimbal" },
+      { name: "High-Resolution Capture" },
+      { name: "Seamless Integration" },
+    ],
     description: [
       {
         title: "Multi-Sensor Gimbal",
@@ -140,16 +159,17 @@ const categories = {
       },
       {
         title: "High-Resolution Capture",
-        whatItMeans: "Captures clear, detailed images in both visual and multispectral bands.",
+        whatItMeans:
+          "Captures clear, detailed images in both visual and multispectral bands.",
         keyBenefit:
           "Provides precise data for detailed crop analysis, disease detection, and plant counting.",
       },
       {
         title: "Seamless Integration",
         whatItMeans:
-          "Designed to be easily mounted and integrated with the drone's flight control system.",
+          "Works smoothly with existing drone systems and workflows.",
         keyBenefit:
-          "Quick setup and automated data collection for efficient field operations.",
+          "Reduces setup time and simplifies field deployment.",
       },
     ],
     image:
@@ -160,6 +180,7 @@ const categories = {
 export default function PayloadCategories() {
   const [active, setActive] = useState<keyof typeof categories>("Multispectral")
   const [hoverIndex, setHoverIndex] = useState<number | null>(null)
+  const [dropdownActive, setDropdownActive] = useState<keyof typeof categories | null>(null)
 
   const data = categories[active]
 
@@ -167,38 +188,73 @@ export default function PayloadCategories() {
     <section className="font-clash-grotesk bg-white w-full min-h-screen py-12">
       <ContentWrapper>
         {/* Tabs */}
-        <div className="flex justify-center">
-          <div className="flex space-x-1 border border-black rounded-full p-1">
+        <div className="flex justify-center relative">
+          <div className="flex space-x-1 border border-black rounded-md p-1">
             {Object.keys(categories).map((key) => (
-              <button
+              <div
                 key={key}
-                onMouseEnter={() => setActive(key as keyof typeof categories)}
-                className={`relative rounded-full px-4 py-2 text-sm font-medium transition focus-visible:outline-2 ${
-                  active === key ? "text-white" : "text-black hover:text-black/60"
-                }`}
-                style={{ WebkitTapHighlightColor: "transparent" }}
+                className="relative group"
+                onMouseEnter={() => {
+                  setActive(key as keyof typeof categories)
+                  setDropdownActive(key as keyof typeof categories)
+                }}
+                onMouseLeave={() => setDropdownActive(null)}
               >
-                {active === key && (
+                <button
+                  className={`relative rounded-md px-4 py-2 text-sm font-medium transition flex items-center space-x-2 focus-visible:outline-2 text-black`}
+                  style={{ WebkitTapHighlightColor: "transparent" }}
+                >
+                  {/* Tab Title with underline */}
+                  <span
+                    className={`relative z-10 after:absolute after:bottom-0 after:left-0 after:h-[0.01rem] after:bg-black after:transition-all after:duration-300 after:w-0 group-hover:after:w-full ${
+                      active === key ? "after:w-full" : ""
+                    }`}
+                  >
+                    {categories[key as keyof typeof categories].title}
+                  </span>
+
+                  {/* Dropdown Arrow */}
                   <motion.span
-                    layoutId="bubble"
-                    className="absolute inset-0 z-0 bg-black"
-                    style={{ borderRadius: 9999 }}
-                    transition={{
-                      type: "spring",
-                      bounce: 0.2,
-                      duration: 0.6,
-                    }}
-                  />
-                )}
-                <span className="relative z-10">
-                  {categories[key as keyof typeof categories].title}
-                </span>
-              </button>
+                    className="relative z-10"
+                    animate={{ rotate: dropdownActive === key ? 180 : 0 }}
+                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                  >
+                    <ChevronDown className="w-4 h-4" />
+                  </motion.span>
+                </button>
+
+                {/* Dropdown Menu */}
+                <AnimatePresence>
+                  {dropdownActive === key &&
+                    categories[key as keyof typeof categories].subcategories && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute left-1/2 -translate-x-1/2 mt-2 w-max bg-white border border-gray-200 rounded-md shadow-lg z-20 overflow-hidden"
+                      >
+                        <ul className="py-1 text-sm text-gray-700">
+                          {categories[
+                            key as keyof typeof categories
+                          ].subcategories.map((sub, subIndex) => (
+                            <li
+                              key={subIndex}
+                              className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                            >
+                              <span className="font-medium">{sub.name}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </motion.div>
+                    )}
+                </AnimatePresence>
+              </div>
             ))}
           </div>
         </div>
 
-        {/* Content */}
+        {/* Main Content */}
         <AnimatePresence mode="wait">
           <motion.div
             key={active}
@@ -206,14 +262,14 @@ export default function PayloadCategories() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-start"
+            className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-start"
           >
-            {/* Left: Fixed Image Wrapper */}
+            {/* Left: Fixed Image */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.2, delay: 0.2 }}
-              className="w-full h-[400px] flex items-center justify-center rounded-lg overflow-hidden"
+              className="w-full h-[400px] flex items-start justify-center rounded-lg overflow-hidden self-start"
             >
               <Image
                 src={data.image}
@@ -229,22 +285,21 @@ export default function PayloadCategories() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.2, delay: 0.4 }}
+              className="self-start max-w-[400px]"
             >
               <h2 className="text-2xl md:text-3xl font-semibold text-black mb-6">
                 {data.headline}
               </h2>
               <div className="space-y-4">
-                {(data.description as PayloadFeature[]).map(
-                  (feature, index) => (
-                    <PayloadAccordionItem
-                      key={index}
-                      feature={feature}
-                      isOpen={hoverIndex === index}
-                      onMouseEnter={() => setHoverIndex(index)}
-                      onMouseLeave={() => setHoverIndex(null)}
-                    />
-                  )
-                )}
+                {(data.description as PayloadFeature[]).map((feature, index) => (
+                  <PayloadAccordionItem
+                    key={index}
+                    feature={feature}
+                    isOpen={hoverIndex === index}
+                    onMouseEnter={() => setHoverIndex(index)}
+                    onMouseLeave={() => setHoverIndex(null)}
+                  />
+                ))}
               </div>
             </motion.div>
           </motion.div>

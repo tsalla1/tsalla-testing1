@@ -120,12 +120,12 @@ export default function dexter_6(): React.JSX.Element {
             </div>
 
             {/* Right Column */}
-            <div className="w-full md:w-1/2">
+            <div className="w-full md:w-1/2 -mt-20">
               <div className="flex flex-col">
                 {/* Product Image */}
                 <div className=" p-4 rounded-lg mb-6">
                   <img
-                    src="https://cdn.sanity.io/images/9w6n0tb6/production/1a0050c94832c75b0ce162c14d56ea20b0c736c6-310x297.png"
+                    src="https://cdn.sanity.io/images/9w6n0tb6/production/f0f1a5dabcfec99d58024cd069b67a4644ae7d0f-1683x1560.png"
                     alt="NextVision DragonEye 2 Surveillance Payload"
                     className="w-full h-auto object-contain"
                   />

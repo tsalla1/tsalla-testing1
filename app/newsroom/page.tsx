@@ -187,15 +187,17 @@ export default function NewsroomPage() {
               <div className="flex flex-wrap gap-6">
                 {newsCategories.map((category, index) => (
                   <button
-                    key={index}
-                    onClick={() => setActiveCategory(category.value)}
-                    className={`text-sm font-medium transition-colors font-clash ${
-                      activeCategory === category.value
-                        ? "text-gray-900 border-b-2 border-gray-900 pb-1"
-                        : "text-gray-500 hover:text-gray-700"
-                    }`}
-                  >
-                    {category.name}
+                  key={index}
+    onClick={() => setActiveCategory(category.value)}
+    className={`relative text-sm font-medium font-clash transition-colors pb-1
+      ${
+        activeCategory === category.value
+          ? "text-gray-900 after:w-full after:bg-gray-900"
+          : "text-gray-500 hover:text-gray-700 after:bg-gray-400"
+      }
+      after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:transition-all after:duration-300 hover:after:w-full`}
+  >
+    {category.name}
                   </button>
                 ))}
               </div>
