@@ -109,10 +109,9 @@ const megaMenuData = {
     description:
       "Advanced unmanned systems engineered for superiority in the field. Every component designed for reliability, performance, and tactical advantage.",
     links: [
-      { name: "Phantom X1", href: "/hardware#phantom", description: "Advanced reconnaissance drone" },
-      { name: "Sentinel Pro", href: "/hardware#sentinel", description: "Long-range surveillance system" },
-      { name: "Hardware Overview", href: "/hardware", description: "Complete systems catalog" },
-      { name: "Technical Specs", href: "/hardware#specs", description: "Detailed specifications" },
+      { name: "Comming Soon....", href: "/hardware#phantom", description: "Advanced reconnaissance drone" },
+     
+      
     ],
   },
   "/maverick": {
@@ -225,8 +224,6 @@ export default function Navbar() {
     setActiveMegaMenu(href)
     if (href !== "/uncrewedsystems") {
       setHoveredUncrewedSystemDetails(null)
-    } else {
-      setHoveredUncrewedSystemDetails(megaMenuData["/uncrewedsystems"].links[0].details);
     }
   }
 
@@ -312,20 +309,20 @@ export default function Navbar() {
           </div>
         </div>
 
-        <AnimatePresence>
+            <AnimatePresence>
           {activeMegaMenu && megaMenuData[activeMegaMenu as keyof typeof megaMenuData] && (
             <motion.div
               key={activeMegaMenu}
-              initial={{ clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)' }}
-              animate={{ clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' }}
-              exit={{ clipPath: 'polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)' }}
-              transition={{ duration: 0.35, ease: "easeInOut" }}
+              initial={{ y: -10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -10, opacity: 0 }}
+              transition={{ duration: 0.15 }}
               className="absolute top-full left-0 right-0 bg-black border-b border-white/20 shadow-2xl z-40"
               onMouseEnter={handleMouseEnterMegaMenu}
               onMouseLeave={handleMouseLeaveMegaMenu}
             >
-              <div className="flex w-full min-h-[450px]">
-                <div className="w-1/2 max-w-7xl mx-auto pl-4 pr-0 py-8 md:pl-6 lg:pl-8 xl:pl-10">
+              <div className="flex flex-col xl:flex-row w-full min-h-[450px]">
+                <div className="w-full xl:w-1/2 max-w-7xl mx-auto pl-4 pr-0 py-8 md:pl-6 lg:pl-8 xl:pl-10">
                   <div className="space-y-1">
                     <h3 className="text-sm font-semibold text-gray-400 mb-6 tracking-wider font-orbit">
                       {megaMenuData[activeMegaMenu as keyof typeof megaMenuData].title}
@@ -372,7 +369,7 @@ export default function Navbar() {
                 </div>
                 <div
                   className={cn(
-                    "w-1/2 py-8 px-8 transition-all duration-500 ease-in-out relative overflow-hidden flex flex-col",
+                    "w-full xl:w-1/2 py-8 px-8 transition-all duration-500  ease-in-out relative overflow-hidden flex flex-col",
                     activeMegaMenu === "/uncrewedsystems"
                       ? "bg-[linear-gradient(rgba(0,0,0,0.3),_rgba(0,0,0,0.3)),url('/blueprint-background.png')] bg-cover bg-center text-white"
                       : "bg-white text-black",
@@ -384,7 +381,7 @@ export default function Navbar() {
                         <h2 className="text-4xl font-bold leading-tight tracking-wide font-orbit mb-4">
                           {hoveredUncrewedSystemDetails.headline}
                         </h2>
-                        <p
+                        <p 
                           className="text-lg leading-relaxed mb-6 font-orbit"
                           dangerouslySetInnerHTML={{ __html: hoveredUncrewedSystemDetails.subheadline }}
                         />
@@ -397,26 +394,26 @@ export default function Navbar() {
                           Explore
                         </Link>
                       </div>
-                      <AnimatePresence mode="wait">
-                        {hoveredUncrewedSystemDetails.droneImage && (
-                          <motion.div
-                            key={hoveredUncrewedSystemDetails.droneImage}
-                            initial={{ y: 20, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            exit={{ y: 20, opacity: 0 }}
-                            transition={{ duration: 0.5, ease: "easeOut" }}
-                            className="absolute bottom-0 right-[-2px] w-[500px] max-w-none h-auto object-contain opacity-80 invert brightness-200 z-10"
-                          >
-                            <Image
-                              src={hoveredUncrewedSystemDetails.droneImage || "/placeholder.svg"}
-                              alt={`${hoveredUncrewedSystemDetails.headline} drone`}
-                              width={650}
-                              height={500}
-                              priority
-                            />
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
+                    <AnimatePresence mode="wait">
+  {hoveredUncrewedSystemDetails.droneImage && (
+    <motion.div
+      key={hoveredUncrewedSystemDetails.droneImage}
+      initial={{ x: 200, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: 200, opacity: 0 }}
+      transition={{ type: "tween", stiffness: 10, damping: 20 }}
+      className="absolute bottom-0 right-[-2px] w-full max-w-[500px] h-auto object-contain opacity-80 invert brightness-200 z-10"
+    >
+      <Image
+        src={hoveredUncrewedSystemDetails.droneImage || "/placeholder.svg"}
+        alt={`${hoveredUncrewedSystemDetails.headline} drone`}
+        width={650}
+        height={500}
+        priority
+      />
+    </motion.div>
+  )}
+</AnimatePresence>
                     </>
                   ) : (
                     <>
@@ -433,6 +430,7 @@ export default function Navbar() {
             </motion.div>
           )}
         </AnimatePresence>
+
       </nav>
 
       {mobileMenuOpen && (
