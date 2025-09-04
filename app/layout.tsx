@@ -4,6 +4,7 @@ import { Inter, Farro } from "next/font/google"
 import "./globals.css"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
+import { Analytics } from "@vercel/analytics/next"
 
 // Load Inter and Farro fonts
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
